@@ -155,23 +155,26 @@ h4 {
         padding-left: 20px;
         padding-right: 20px;
     }
-    .offerings {
-        padding-left: 20px;
-        padding-right: 20px;
-        width: 100%;
-    }
 
     h4 {
         font-size: 48px;
     }
-    .offering-item {
-        padding: 20px;
-    }
-    .offering-item img {
-    width: 100%;
-    }
     
     .iframe {
     width: 1000px; 
+    }
+    
+    .offerings {
+        max-width: 90%;
+        padding: 0 20px;
+    }
+
+    .offerings-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .offering-item {
+        padding: 20px;
     }
 }
