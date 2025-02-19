@@ -21,7 +21,7 @@ body {
 
 .logo {
     display: flex;
-    justify-content: flex-end; 
+    justify-content: space-between; 
     align-items: center;
     width: 100%;
     padding-top: 10px;
@@ -63,55 +63,41 @@ body {
 .offerings {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin: 20px auto;
-    max-width: 100%;
-    padding: 0 10px;
+    margin-bottom: 100px;
+    padding: 10px;
 }
 
 .offerings-header {
     text-align: left;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 h4 {
     font-size: 24px;
     font-weight: normal;
+    margin: 0px;
 }
 
 .offerings-grid {
     display: grid;
     grid-template-columns: 1fr; 
     gap: 15px;
-    width: 100%;
 }
 
 .offering-item {
-    background: white;
-    border-radius: 12px;
-    padding: 15px;
     font-size: 16px;
-    text-align: center;
+    text-align: left;
     display: flex; 
     flex-direction: column;
-    align-items: center;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 }
 
 .offering-item img {
     width: 100%;
+    background-color: #fff;
     height: auto;
-    border-radius: 8px;
-}
-
-.spotify-container {
-    text-align: center;
-    padding: 20px 0;
-}
-
-.iframe {
-    border-radius: 12px;
-    width: 400px; 
+    aspect-ratio: 2 / 1;
+    overflow: hidden;
+    position: relative;
 }
 
 .imprint-link {
@@ -123,6 +109,14 @@ h4 {
     color: black;
     margin-bottom: 40px;
 }
+
+.contact-card {
+    font-size: 16px;
+    text-align: left;
+    display: flex; 
+    flex-direction: column;
+}
+
 .text-me {
     font-family: 'Doto', sans-serif;
     font-size: 16px;
@@ -137,15 +131,13 @@ h4 {
 .time-selector {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
+    align-items: left;
+    text-align: left;
 }
 
 label {
-    display: block;
-    margin: 18px 18px;
+    margin-top: 18px;
+    margin-bottom: 18px;
     font-size: 18px;
     font-weight: 400;
 }
@@ -167,12 +159,12 @@ input:focus, select:focus {
     outline: none;
 }
 
-
-button, .whatsapp-button {
+.whatsapp-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-top: 25px;
+    width: 200px;
+    margin-top: 30px;
     background: #f8f8f8;
     color: black;
     font-size: 18px;
@@ -182,18 +174,7 @@ button, .whatsapp-button {
     border-radius: 12px;
     cursor: pointer;
     text-decoration: none;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-button:hover, .whatsapp-button:hover {
-    background: #e8e8e8;
-    border-color: black;
-}
-
-button:active, .whatsapp-button:active {
-    background: #dcdcdc;
-    transform: scale(0.98);
+    box-shadow:  4px 6px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -215,13 +196,8 @@ button:active, .whatsapp-button:active {
         font-size: 48px;
     }
     
-    .iframe {
-    width: 1000px; 
-    }
-    
     .offerings {
-        max-width: 90%;
-        padding: 0 20px;
+        padding: 20px;
     }
 
     .offerings-grid {
@@ -230,28 +206,48 @@ button:active, .whatsapp-button:active {
     }
 
     .offering-item {
-        padding: 20px;
         font-size: 24px;
     }
 
+    .contact-card {
+        font-size: 24px;
+    }
     .text-me {
         font-family: 'Doto', sans-serif;
         font-size: 24px;
     }
 
-
     .time-selector {
         max-width: 600px; 
     }
-    
-    input[type="date"] {
-        font-size: 20px;
-        padding: 14px;
-        min-width: 280px;
+    .whatsapp-button {
+        width: 300px;
     }
+}
 
-    button, .whatsapp-button {
-        font-size: 16px;
-        padding: 10px 15px;
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #000;
+        color: #fff;
+    }
+    .logo a {
+        color: white;
+    }
+    nav a {
+        color: white;
+    }
+    .contact-details a {
+        color: white;
+    }
+    .toggle-label {
+      color: white;
+    }
+    .imprint-link a {
+        color: white;
+    }
+    .whatsapp-button {
+        background: #222;
+        color: white;
+        border: 2px solid #ffffff;
     }
 }
