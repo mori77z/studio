@@ -15,6 +15,7 @@
     <title>Studio</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=Trocchi&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Doto:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
     
@@ -76,27 +77,20 @@
             <h4>How fast I do it.</h4>
         </div>
         <div class="offering-item">
-            <p>Designs: Ready in 2 - 4 weeks</p>
-            <p>Development: Launch in 2 - 8 weeks</p>
-        <p class="text-me">Now’s the perfect time to send me a message!</p>
-    </div>
-    <div class="clock-container">
-        <div class="clock">
-            <span id="hours">00</span>:<span id="minutes">00</span>
+            <p>Designs: Ready in 2 - 4 weeks<br>Development: Launch in 2 - 8 weeks</p>
+            <div class="text-me">
+                Now <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span> is the perfect time to send me a message!
+            </div>
+   
+        <div class="time-selector">
+            <label for="date"> Text me a day and time for a first Call (Mo-Fr / 10:00-17:00)</label>
+            <input type="date" id="date" min="" required>
+        
+            <select id="time" required></select>
         </div>
-    </div>
-
-    <div class="time-selector">
-        <label for="date">Select a date:</label>
-        <input type="date" id="date" min="" required>
-
-        <label for="time">Select a time:</label>
-        <select id="time" required>
-
-        </select>
-    </div>
-    <a id="whatsapp-btn" href="#" class="whatsapp-button" target="_blank">
-      Text me on WhatsApp</a>
+        
+        <a id="whatsapp-btn" href="#" class="whatsapp-button" target="_blank">Send on WhatsApp</a>
+        
 </section>
 
 <div class="spotify-container">

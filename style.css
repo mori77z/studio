@@ -81,7 +81,7 @@ h4 {
 
 .offerings-grid {
     display: grid;
-    grid-template-columns: 1fr; /* Standard: 1 Spalte für Mobile */
+    grid-template-columns: 1fr; 
     gap: 15px;
     width: 100%;
 }
@@ -90,7 +90,11 @@ h4 {
     background: white;
     border-radius: 12px;
     padding: 15px;
+    font-size: 16px;
     text-align: center;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -119,23 +123,10 @@ h4 {
     color: black;
     margin-bottom: 40px;
 }
-
-.clock-container {
-    margin: 20px 0;
-}
-
-.clock-message {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.clock {
-    font-size: 48px;
-    background: black;
-    color: white;
+.text-me {
+    font-family: 'Doto', sans-serif;
+    font-size: 16px;
     display: inline-block;
-    padding: 20px 30px;
-    border-radius: 10px;
 }
 
 .minutes {
@@ -144,34 +135,67 @@ h4 {
 }
 
 .time-selector {
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
 }
 
 label {
     display: block;
-    margin-top: 10px;
+    margin: 18px 18px;
+    font-size: 18px;
+    font-weight: 400;
 }
 
 input, select {
-    padding: 8px;
-    font-size: 16px;
-    margin-top: 5px;
-}
-
-button {
-    margin-top: 20px;
-    background: #25D366;
-    color: white;
+    width: 100%;
+    max-width: 300px; 
+    padding: 12px;
     font-size: 18px;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    margin-top: 10px;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    transition: border-color 0.3s ease-in-out;
+    box-sizing: border-box; 
 }
 
-button:hover {
-    background: #1ebe57;
+input:focus, select:focus {
+    border-color: black;
+    outline: none;
 }
+
+
+button, .whatsapp-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    background: #f8f8f8;
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 12px 20px;
+    border: 2px solid #d6d6d6;
+    border-radius: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover, .whatsapp-button:hover {
+    background: #e8e8e8;
+    border-color: black;
+}
+
+button:active, .whatsapp-button:active {
+    background: #dcdcdc;
+    transform: scale(0.98);
+}
+
 
 @media (min-width: 768px) {
     .header-container {
@@ -207,5 +231,27 @@ button:hover {
 
     .offering-item {
         padding: 20px;
+        font-size: 24px;
+    }
+
+    .text-me {
+        font-family: 'Doto', sans-serif;
+        font-size: 24px;
+    }
+
+
+    .time-selector {
+        max-width: 600px; 
+    }
+    
+    input[type="date"] {
+        font-size: 20px;
+        padding: 14px;
+        min-width: 280px;
+    }
+
+    button, .whatsapp-button {
+        font-size: 16px;
+        padding: 10px 15px;
     }
 }

@@ -1,53 +1,133 @@
+// Zurück-Funktion mit Fallback
 function goBack() {
-  if (document.referrer.includes('moritzgauss.com')) {
-    window.history.back();
-  } else {
-    window.location.href = '/';
-  }
+    if (document.referrer && document.referrer.includes('moritzgauss.com')) {
+        window.history.back();
+    } else {
+        window.location.href = '/';
+    }
 }
-    function updateClock() {
-        const now = new Date();
-        let hours = now.getHours().toString().padStart(2, '0');
-        let minutes = now.getMinutes().toString().padStart(2, '0');
 
-        document.querySelector('.hours').textContent = hours;
-        document.querySelector('.minutes').textContent = minutes;
+document.addEventListener("DOMContentLoaded", function () {
+    const textElement = document.querySelector(".text-me");
+    let isFlipping = false;
 
-        const minuteSpan = document.querySelector('.minutes');
-        minuteSpan.style.transform = 'scale(1.2)';
-        setTimeout(() => {
-            minuteSpan.style.transform = 'scale(1)';
-        }, 300);
+    function randomChar() {
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        return chars[Math.floor(Math.random() * chars.length)];
     }
 
-    setInterval(updateClock, 1000);
-    updateClock();
+    function glitchText(duration = 300) {
+        if (isFlipping) return; 
+        isFlipping = true;
 
-    const dateInput = document.getElementById('date');
-    dateInput.setAttribute("min", new Date().toISOString().split("T")[0]); 
+        const textBeforeClock = "Now ";
+        const textAfterClock = " is the perfect time to send me a message!";
 
-    dateInput.addEventListener('input', function() {
-        const selectedDate = new Date(this.value);
-        const day = selectedDate.getDay(); // 
+        let scrambledBefore = textBeforeClock.split("").map(char => 
+            char === " " ? " " : randomChar()
+        ).join("");
 
-        if (day === 0 || day === 6) {
-            alert("Please choose a weekday (Monday - Friday).");
-            this.value = "";
+        let scrambledAfter = textAfterClock.split("").map(char => 
+            char === " " ? " " : randomChar()
+        ).join("");
+
+        // Set the new scrambled text while keeping the clock untouched
+        textElement.innerHTML = `
+            ${scrambledBefore}<span id="hours">${document.getElementById('hours').textContent}</span>:<span id="minutes">${document.getElementById('minutes').textContent}</span>:<span id="seconds">${document.getElementById('seconds').textContent}</span>${scrambledAfter}
+        `;
+
+        setTimeout(() => {
+            textElement.innerHTML = `
+                Now <span id="hours">${document.getElementById('hours').textContent}</span>:<span id="minutes">${document.getElementById('minutes').textContent}</span>:<span id="seconds">${document.getElementById('seconds').textContent}</span> is the perfect time to send me a message!
+            `;
+            isFlipping = false;
+        }, duration);
+    }
+
+    // Glitch only on significant scroll (50px movement)
+    let lastScrollTop = 0;
+    window.addEventListener("scroll", function () {
+        let currentScroll = window.scrollY;
+        if (Math.abs(currentScroll - lastScrollTop) > 50) {
+            glitchText();
+            lastScrollTop = currentScroll;
         }
     });
 
 
-    const timeSelect = document.getElementById('time');
-    for (let hour = 10; hour <= 16; hour++) {
-        for (let min = 0; min < 60; min += 15) {
-            let timeStr = `${hour.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}`;
-            let option = new Option(timeStr, timeStr);
-            timeSelect.appendChild(option);
-        }
+    // Keep the clock ticking
+    function updateClock() {
+        const now = new Date();
+        let hours = now.getHours().toString().padStart(2, '0');
+        let minutes = now.getMinutes().toString().padStart(2, '0');
+        let seconds = now.getSeconds().toString().padStart(2, '0');
+
+        document.getElementById('hours').textContent = hours;
+        document.getElementById('minutes').textContent = minutes;
+        document.getElementById('seconds').textContent = seconds;
     }
 
+    setInterval(updateClock, 1000);
+    updateClock();
+});
 
-    document.getElementById('whatsapp-button').addEventListener('click', function() {
+
+// Datumsauswahl auf Werktage & korrekten Starttag beschränken
+const dateInput = document.getElementById('date');
+const timeSelect = document.getElementById('time');
+
+// Prüfen, ob Elemente existieren, bevor darauf zugegriffen wird
+if (dateInput) {
+    // Nächsten gültigen Tag als Minimum setzen
+    function getNextValidDate() {
+        let today = new Date();
+        if (today.getHours() >= 16) {
+            today.setDate(today.getDate() + 1);
+        }
+        while (today.getDay() === 0 || today.getDay() === 6) {
+            today.setDate(today.getDate() + 1);
+        }
+        return today.toISOString().split("T")[0];
+    }
+
+    dateInput.setAttribute("min", getNextValidDate());
+
+    dateInput.addEventListener('input', function () {
+        const selectedDate = new Date(this.value);
+        const day = selectedDate.getDay();
+
+        if (day === 0 || day === 6) {
+            alert("Please choose a weekday (Monday - Friday).");
+            this.value = "";
+            timeSelect.disabled = true;
+        } else {
+            timeSelect.disabled = false;
+        }
+    });
+}
+
+// Zeitauswahl von 10-16 Uhr in 15-Minuten-Schritten
+if (timeSelect) {
+    function populateTimeOptions() {
+        timeSelect.innerHTML = "";
+        for (let hour = 10; hour <= 16; hour++) {
+            for (let min = 0; min < 60; min += 15) {
+                let timeStr = `${hour.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}`;
+                let option = new Option(timeStr, timeStr);
+                timeSelect.appendChild(option);
+            }
+        }
+    }
+    populateTimeOptions();
+}
+
+// WhatsApp-Button mit Datum & Uhrzeit
+const whatsappBtn = document.getElementById('whatsapp-btn');
+
+if (whatsappBtn) {
+    whatsappBtn.addEventListener('click', function (event) {
+        event.preventDefault(); // Verhindert das Springen der Seite, weil es ein <a>-Tag ist
+
         let selectedDate = dateInput.value;
         let selectedTime = timeSelect.value;
 
@@ -61,3 +141,4 @@ function goBack() {
 
         window.open(url, '_blank');
     });
+}
