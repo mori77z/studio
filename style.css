@@ -64,37 +64,36 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 40px auto;
-    width: 400px;
-    padding-left: 10px;
-    padding-right: 10px;
+    margin: 20px auto;
+    max-width: 100%;
+    padding: 0 10px;
 }
 
 .offerings-header {
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 h4 {
-    font-size: 36px;
+    font-size: 24px;
     font-weight: normal;
 }
 
 .offerings-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: 1fr; /* Standard: 1 Spalte für Mobile */
+    gap: 15px;
+    width: 100%;
 }
 
 .offering-item {
     background: white;
     border-radius: 12px;
-    padding: 20px;
+    padding: 15px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
     opacity: 0;
     transition: transform 0.6s ease-out, opacity 0.6s ease-out;
-    
     will-change: transform, opacity;
 }
 
@@ -108,7 +107,7 @@ h4 {
 
 @keyframes fadeInScaleUp {
     from {
-        transform: scale(0.9);
+        transform: scale(0.95);
         opacity: 0;
     }
     to {
@@ -117,16 +116,8 @@ h4 {
     }
 }
 
-/* Optional: Apply animation only when in viewport using the ::view-transition pseudo-class (for modern browsers) */
-@media (prefers-reduced-motion: no-preference) {
-    .offering-item {
-        animation: fadeInScaleUp linear both;
-        animation-timeline: view();
-    }
-}
-
 .offering-item img {
-    width: 300px;
+    width: 100%;
     height: auto;
     border-radius: 8px;
 }
