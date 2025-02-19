@@ -138,8 +138,7 @@ h4 {
 
 .iframe {
     border-radius: 12px;
-    width: 300px; 
-    height: 600px;
+    width: 400px; 
 }
 
 .imprint-link {
@@ -183,6 +182,5 @@ h4 {
     
     .iframe {
     width: 1000px; 
-    height: 600px;
     }
 }
