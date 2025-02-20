@@ -126,7 +126,7 @@ const whatsappBtn = document.getElementById('whatsapp-btn');
 
 if (whatsappBtn) {
     whatsappBtn.addEventListener('click', function (event) {
-        event.preventDefault(); // Verhindert das Springen der Seite, weil es ein <a>-Tag ist
+        event.preventDefault(); // Prevents page jump since it's an <a> tag
 
         let selectedDate = dateInput.value;
         let selectedTime = timeSelect.value;
@@ -136,9 +136,23 @@ if (whatsappBtn) {
             return;
         }
 
-        let message = `Hey, I want to book a time on ${selectedDate} at ${selectedTime}.`;
-        let url = `https://wa.me/4915737365084?text=${encodeURIComponent(message)}`;
+        // Convert date format from YYYY-MM-DD to DD.MM.YYYY
+        let dateParts = selectedDate.split("-");
+        let formattedDate = `${dateParts[2]}.${dateParts[1]}.${dateParts[0]}`;
 
+        // Detect browser language (default to English if not German)
+        let lang = navigator.language || navigator.userLanguage;
+        let isGerman = lang.startsWith("de");
+
+        // Generate message based on detected language
+        let message;
+        if (isGerman) {
+            message = `Hey Moritz, ich würde gerne ein Gespräch vereinbaren am ${formattedDate} um ${selectedTime}. Liebe Grüße, [Ihr Name / Firma / E-Mail-Adresse]`;
+        } else {
+            message = `Hey Moritz, I would like to schedule a call with you on ${formattedDate} at ${selectedTime}. Best regards, [Your Name / Company / Email Address]`;
+        }
+
+        let url = `https://wa.me/4915737365084?text=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
     });
 }
