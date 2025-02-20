@@ -151,7 +151,6 @@ input, select {
     margin-top: 10px;
     border: 2px solid #000000;
     border-radius: 8px;
-    transition: border-color 0.3s ease-in-out;
     box-sizing: border-box; 
 }
 
