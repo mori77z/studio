@@ -137,7 +137,7 @@ if (whatsappBtn) {
         }
 
         let message = `Hey, I want to book a time on ${selectedDate} at ${selectedTime}.`;
-        let url = `https://wa.me/004915737365084?text=${encodeURIComponent(message)}`;
+        let url = `https://wa.me/4915737365084?text=${encodeURIComponent(message)}`;
 
         window.open(url, '_blank');
     });
