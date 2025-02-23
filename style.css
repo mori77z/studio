@@ -98,6 +98,8 @@ h4 {
     aspect-ratio: 2 / 1;
     overflow: hidden;
     position: relative;
+    /*object-fit: cover;
+    object-position: top;*/
 }
 
 .imprint-link {
