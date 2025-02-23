@@ -176,7 +176,6 @@ input:focus, select:focus {
     border-radius: 12px;
     cursor: pointer;
     text-decoration: none;
-    box-shadow:  4px 6px rgba(0, 0, 0, 0.1);
 }
 
 
