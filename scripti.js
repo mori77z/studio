@@ -8,34 +8,48 @@ function goBack() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    const textElements = document.querySelectorAll(".offerings-header h4");
+    const textElement = document.querySelector(".text-me");
     let isFlipping = false;
 
     function randomChar() {
-        const symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-        return symbols[Math.floor(Math.random() * symbols.length)];
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        return chars[Math.floor(Math.random() * chars.length)];
     }
 
-    function glitchText(element, originalText, duration = 300) {
-        if (isFlipping) return;
+    function glitchText(duration = 300) {
+        if (isFlipping) return; 
         isFlipping = true;
 
-        let scrambledText = Array.from({ length: originalText.length }, () => randomChar()).join("");
-        element.textContent = scrambledText;
+        const textBeforeClock = "Now ";
+        const textAfterClock = " is the perfect time to send me a message!";
+
+        let scrambledBefore = textBeforeClock.split("").map(char => 
+            char === " " ? " " : randomChar()
+        ).join("");
+
+        let scrambledAfter = textAfterClock.split("").map(char => 
+            char === " " ? " " : randomChar()
+        ).join("");
+
+        // Set the new scrambled text while keeping the clock untouched
+        textElement.innerHTML = `
+            ${scrambledBefore}<span id="hours">${document.getElementById('hours').textContent}</span>:<span id="minutes">${document.getElementById('minutes').textContent}</span>:<span id="seconds">${document.getElementById('seconds').textContent}</span>${scrambledAfter}
+        `;
 
         setTimeout(() => {
-            element.textContent = originalText;
+            textElement.innerHTML = `
+                Now <span id="hours">${document.getElementById('hours').textContent}</span>:<span id="minutes">${document.getElementById('minutes').textContent}</span>:<span id="seconds">${document.getElementById('seconds').textContent}</span> is the perfect time to send me a message!
+            `;
             isFlipping = false;
         }, duration);
     }
 
+    // Glitch only on significant scroll (50px movement)
     let lastScrollTop = 0;
     window.addEventListener("scroll", function () {
         let currentScroll = window.scrollY;
         if (Math.abs(currentScroll - lastScrollTop) > 50) {
-            document.querySelectorAll(".offerings-header h4").forEach(el => {
-                glitchText(el, el.textContent);
-            });
+            glitchText();
             lastScrollTop = currentScroll;
         }
     });
@@ -180,50 +194,4 @@ if (whatsappBtn) {
         window.open(url, '_blank');
     });
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-    const textElement = document.querySelector(".text-me");
-    let isFlipping = false;
-
-    function randomChar() {
-        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-        return chars[Math.floor(Math.random() * chars.length)];
-    }
-
-    function glitchText(duration = 300) {
-        if (isFlipping) return; 
-        isFlipping = true;
-
-        const textBeforeClock = "Now ";
-        const textAfterClock = " is the perfect time to send me a message!";
-
-        let scrambledBefore = textBeforeClock.split("").map(char => 
-            char === " " ? " " : randomChar()
-        ).join("");
-
-        let scrambledAfter = textAfterClock.split("").map(char => 
-            char === " " ? " " : randomChar()
-        ).join("");
-
-        // Set the new scrambled text while keeping the clock untouched
-        textElement.innerHTML = `
-            ${scrambledBefore}<span id="hours">${document.getElementById('hours').textContent}</span>:<span id="minutes">${document.getElementById('minutes').textContent}</span>:<span id="seconds">${document.getElementById('seconds').textContent}</span>${scrambledAfter}
-        `;
-
-        setTimeout(() => {
-            textElement.innerHTML = `
-                Now <span id="hours">${document.getElementById('hours').textContent}</span>:<span id="minutes">${document.getElementById('minutes').textContent}</span>:<span id="seconds">${document.getElementById('seconds').textContent}</span> is the perfect time to send me a message!
-            `;
-            isFlipping = false;
-        }, duration);
-    }
-
-    // Glitch only on significant scroll (50px movement)
-    let lastScrollTop = 0;
-    window.addEventListener("scroll", function () {
-        let currentScroll = window.scrollY;
-        if (Math.abs(currentScroll - lastScrollTop) > 50) {
-            glitchText();
-            lastScrollTop = currentScroll;
-        }
-    });*/
+*/
