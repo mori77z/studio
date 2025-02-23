@@ -23,23 +23,16 @@ document.addEventListener("DOMContentLoaded", function () {
         // Generate a string with exactly 10 random Unicode symbols
         let scrambledText = Array.from({ length: 10 }, () => randomChar()).join("");
 
-        textElements.forEach(textElement => {
-            let originalText = textElement.innerHTML;
-            let scrambledText = originalText.split("").map(char =>
-                char === " " ? " " : randomChar()
-            ).join("");
-
-            textElement.innerHTML = scrambledText;
-
-            setTimeout(() => {
-                textElement.innerHTML = originalText;
-            }, duration);
-        });
+element.textContent = scrambledText; // Apply the 10-symbol glitch effect
 
         setTimeout(() => {
+            element.textContent = originalText; // Restore original text after duration
             isFlipping = false;
         }, duration);
     }
+
+    let lastScrollTop = 0;
+    let ticking = false;
 
     // Glitch nur bei starkem Scrollen (50px Bewegung)
     let lastScrollTop = 0;
