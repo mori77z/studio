@@ -1,4 +1,4 @@
-// Zurück-Funktion mit Fallback
+//Zurück-Funktion mit Fallback
 function goBack() {
     if (document.referrer && document.referrer.includes('moritzgauss.com')) {
         window.history.back();
@@ -13,37 +13,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function randomChar() {
         const symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-       return symbols[Math.floor(Math.random() * symbols.length)];
+        return symbols[Math.floor(Math.random() * symbols.length)];
     }
 
     function glitchText(element, originalText, duration = 300) {
         if (isFlipping) return;
         isFlipping = true;
 
-        // Generate a string with exactly 10 random Unicode symbols
-        let scrambledText = Array.from({ length: 10 }, () => randomChar()).join("");
-
-element.textContent = scrambledText; // Apply the 10-symbol glitch effect
+        let scrambledText = Array.from({ length: originalText.length }, () => randomChar()).join("");
+        element.textContent = scrambledText;
 
         setTimeout(() => {
-            element.textContent = originalText; // Restore original text after duration
+            element.textContent = originalText;
             isFlipping = false;
         }, duration);
     }
 
     let lastScrollTop = 0;
-    let ticking = false;
-
-    // Glitch nur bei starkem Scrollen (50px Bewegung)
-    let lastScrollTop = 0;
     window.addEventListener("scroll", function () {
         let currentScroll = window.scrollY;
         if (Math.abs(currentScroll - lastScrollTop) > 50) {
-            glitchText();
+            document.querySelectorAll(".offerings-header h4").forEach(el => {
+                glitchText(el, el.textContent);
+            });
             lastScrollTop = currentScroll;
         }
     });
-
 
     // Keep the clock ticking
     function updateClock() {
@@ -52,23 +47,26 @@ element.textContent = scrambledText; // Apply the 10-symbol glitch effect
         let minutes = now.getMinutes().toString().padStart(2, '0');
         let seconds = now.getSeconds().toString().padStart(2, '0');
 
-        document.getElementById('hours').textContent = hours;
-        document.getElementById('minutes').textContent = minutes;
-        document.getElementById('seconds').textContent = seconds;
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+
+        if (hoursEl && minutesEl && secondsEl) {
+            hoursEl.textContent = hours;
+            minutesEl.textContent = minutes;
+            secondsEl.textContent = seconds;
+        }
     }
 
     setInterval(updateClock, 1000);
     updateClock();
 });
 
-
 // Datumsauswahl auf Werktage & korrekten Starttag beschränken
 const dateInput = document.getElementById('date');
 const timeSelect = document.getElementById('time');
 
-// Prüfen, ob Elemente existieren, bevor darauf zugegriffen wird
 if (dateInput) {
-    // Nächsten gültigen Tag als Minimum setzen
     function getNextValidDate() {
         let today = new Date();
         if (today.getHours() >= 16) {
@@ -83,15 +81,17 @@ if (dateInput) {
     dateInput.setAttribute("min", getNextValidDate());
 
     dateInput.addEventListener('input', function () {
+        if (!this.value) return;
+
         const selectedDate = new Date(this.value);
         const day = selectedDate.getDay();
 
         if (day === 0 || day === 6) {
             alert("Please choose a weekday (Monday - Friday).");
             this.value = "";
-            timeSelect.disabled = true;
+            if (timeSelect) timeSelect.disabled = true;
         } else {
-            timeSelect.disabled = false;
+            if (timeSelect) timeSelect.disabled = false;
         }
     });
 }
@@ -112,14 +112,13 @@ if (timeSelect) {
 }
 
 // E-Mail-Button mit Datum & Uhrzeit
-const emailBtn = document.getElementById('whatsapp-btn'); // Beibehalten, damit du den Button nicht ändern musst
+const emailBtn = document.getElementById('whatsapp-btn');
 
 if (emailBtn) {
     emailBtn.addEventListener('click', function (event) {
         event.preventDefault();
 
-        let dateInput = document.getElementById('date');
-        let timeSelect = document.getElementById('time');
+        if (!dateInput || !timeSelect) return;
 
         let selectedDate = dateInput.value;
         let selectedTime = timeSelect.value;
@@ -129,25 +128,18 @@ if (emailBtn) {
             return;
         }
 
-        // Formatierung von YYYY-MM-DD zu DD.MM.YYYY
         let dateParts = selectedDate.split("-");
         let formattedDate = `${dateParts[2]}.${dateParts[1]}.${dateParts[0]}`;
 
-        // Sprache erkennen (Standard: Englisch, wenn nicht Deutsch)
         let lang = navigator.language || navigator.userLanguage;
         let isGerman = lang.startsWith("de");
 
-        // Nachricht je nach Sprache erstellen
         let subject = isGerman ? "Anfrage für einen Call" : "Request for a first Call";
-        let body;
-        
-        if (isGerman) {
-            body = `Hey Moritz,%0D%0A%0D%0AIch würde gerne ein Gespräch vereinbaren am ${formattedDate} um ${selectedTime}.%0D%0A%0D%0ALiebe Grüße,%0D%0A[Ihr Name / Firma / E-Mail-Adresse]`;
-        } else {
-            body = `Hey Moritz,%0D%0A%0D%0AI would like to schedule a call with you on ${formattedDate} at ${selectedTime}.%0D%0A%0D%0ABest regards,%0D%0A[Your Name / Company / Email Address]`;
-        }
+        let body = isGerman
+            ? `Hey Moritz,%0D%0A%0D%0AIch würde gerne ein Gespräch vereinbaren am ${formattedDate} um ${selectedTime}.%0D%0A%0D%0ALiebe Grüße,%0D%0A[Ihr Name / Firma / E-Mail-Adresse]`
+            : `Hey Moritz,%0D%0A%0D%0AI would like to schedule a call with you on ${formattedDate} at ${selectedTime}.%0D%0A%0D%0ABest regards,%0D%0A[Your Name / Company / Email Address]`;
 
-        let mailtoLink = `mailto:moritzgg99@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+        let mailtoLink = `mailto:moritzgg99@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         window.location.href = mailtoLink;
     });
 }
