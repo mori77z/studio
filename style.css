@@ -56,6 +56,7 @@ body {
 
 .site-title {
     font-size: 28px;
+    font-family: Instrument Serif, serif;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -73,7 +74,7 @@ body {
 }
 
 h4 {
-    font-size: 24px;
+    font-size: 36px;
     font-weight: normal;
     margin: 0px;
 }
@@ -85,7 +86,7 @@ h4 {
 }
 
 .offering-item {
-    font-size: 16px;
+    font-size: 24px;
     text-align: left;
     display: flex; 
     flex-direction: column;
@@ -207,7 +208,7 @@ input:focus, select:focus {
     }
 
     .offering-item {
-        font-size: 24px;
+        font-size: 36px;
     }
 
     .contact-card {
