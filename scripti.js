@@ -12,13 +12,16 @@ document.addEventListener("DOMContentLoaded", function () {
     let isFlipping = false;
 
     function randomChar() {
-        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-        return chars[Math.floor(Math.random() * chars.length)];
+        const symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+       return symbols[Math.floor(Math.random() * symbols.length)];
     }
 
-    function glitchText(duration = 300) {
+    function glitchText(element, originalText, duration = 300) {
         if (isFlipping) return;
         isFlipping = true;
+
+        // Generate a string with exactly 10 random Unicode symbols
+        let scrambledText = Array.from({ length: 10 }, () => randomChar()).join("");
 
         textElements.forEach(textElement => {
             let originalText = textElement.innerHTML;
