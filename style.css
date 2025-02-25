@@ -86,6 +86,7 @@ h4 {
 }
 
 .offering-item {
+    font-family: 'Doto', sans-serif;
     font-size: 24px;
     text-align: left;
     display: flex; 
