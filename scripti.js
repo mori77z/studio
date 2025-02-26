@@ -158,69 +158,51 @@ if (emailBtn) {
     });
 }
 
-const coverFlow = document.querySelector("#coverFlow .coverflow-track");
-const items = document.querySelectorAll("#coverFlow .coverflow-item");
+const coverFlow = document.querySelector(".coverflow-track");
+const items = document.querySelectorAll(".coverflow-item");
+const flipSound = new Audio("flip.mp3"); // Sound für das Scrollen
 let index = Math.floor(items.length / 2);
-let startX = 0;
-let currentX = 0;
-let isDragging = false;
-
-const flipSound = new Audio("flip.mp3"); // Füge deine Sounddatei ein
 
 function updateCoverFlow() {
-    const containerWidth = document.querySelector("#coverFlow").offsetWidth;
-    const itemWidth = items[0].offsetWidth;
-    const centerOffset = (containerWidth - itemWidth) / 2;
-
     items.forEach((item, i) => {
         let offset = i - index;
-        let scale = 1 - Math.abs(offset) * 0.1;
-        let rotateY = offset * 25; /* Weniger Rotation */
-        let translateX = offset * 220 - centerOffset; 
+        let scale = Math.max(1 - Math.abs(offset) * 0.2, 0.6);
+        let rotateY = offset * 50;
+        let translateX = offset * 250;
 
         item.style.transform = `translateX(${translateX}px) scale(${scale}) rotateY(${rotateY}deg)`;
-        item.style.opacity = 1 - Math.abs(offset) * 0.4;
+        item.style.opacity = Math.abs(offset) > 2 ? 0 : 1; // Unsichtbar, wenn zu weit links/rechts
         item.style.zIndex = -Math.abs(offset);
     });
 }
 
-function handleTouchStart(e) {
-    if (!e.target.closest("#coverFlow")) return;
+function handleScroll(e) {
+    let direction = e.deltaY > 0 ? 1 : -1;
+    if ((direction === 1 && index < items.length - 1) || (direction === -1 && index > 0)) {
+        index += direction;
+        flipSound.play();
+        updateCoverFlow();
+    }
+}
+
+function handleSwipeStart(e) {
     startX = e.touches[0].clientX;
-    isDragging = true;
 }
 
-function handleTouchMove(e) {
-    if (!isDragging) return;
-    currentX = e.touches[0].clientX;
-}
-
-function handleTouchEnd() {
-    if (!isDragging) return;
-    let diff = startX - currentX;
-
+function handleSwipeEnd(e) {
+    let diff = startX - e.changedTouches[0].clientX;
     if (diff > 50 && index < items.length - 1) {
         index++;
-        flipSound.play(); // Sound abspielen
     } else if (diff < -50 && index > 0) {
         index--;
-        flipSound.play(); // Sound abspielen
     }
-
-    isDragging = false;
-    requestAnimationFrame(updateCoverFlow);
+    flipSound.play();
+    updateCoverFlow();
 }
 
-coverFlow.addEventListener("touchstart", handleTouchStart);
-coverFlow.addEventListener("touchmove", handleTouchMove);
-coverFlow.addEventListener("touchend", handleTouchEnd);
-
-updateCoverFlow();
-
-// Touch-Event nur für Cover Flow aktivieren
-document.querySelector("#coverFlow").addEventListener("touchstart", handleTouchStart, { passive: true });
-document.querySelector("#coverFlow").addEventListener("touchmove", handleTouchMove, { passive: true });
-document.querySelector("#coverFlow").addEventListener("touchend", handleTouchEnd);
+window.addEventListener("wheel", handleScroll);
+window.addEventListener("touchstart", handleSwipeStart);
+window.addEventListener("touchend", handleSwipeEnd);
 
 updateCoverFlow();
 
