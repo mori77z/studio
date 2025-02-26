@@ -158,21 +158,53 @@ if (emailBtn) {
     });
 }
 
-const container = document.querySelector(".offerings");
 const items = document.querySelectorAll(".offering-item");
+let index = Math.floor(items.length / 2);
+let startX = 0;
+let currentX = 0;
+let isDragging = false;
 
-container.addEventListener("scroll", () => {
-    let center = container.scrollLeft + container.clientWidth / 2;
-    items.forEach(item => {
-        let rect = item.getBoundingClientRect();
-        let itemCenter = rect.left + rect.width / 2;
-        let distance = Math.abs(center - itemCenter);
-        let scale = Math.max(1 - distance / 500, 0.7);
-        let rotateY = (center - itemCenter) / 10;
+function updateCoverFlow() {
+    items.forEach((item, i) => {
+        let offset = i - index;
+        let scale = 1 - Math.abs(offset) * 0.1;
+        let rotateY = offset * 30;
+        let translateX = offset * 50;
 
-        item.style.transform = `scale(${scale}) rotateY(${rotateY}deg)`;
+        item.style.transform = `translateX(${translateX}%) scale(${scale}) rotateY(${rotateY}deg)`;
+        item.style.zIndex = -Math.abs(offset);
     });
-});
+}
+
+function handleTouchStart(e) {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+}
+
+function handleTouchMove(e) {
+    if (!isDragging) return;
+    currentX = e.touches[0].clientX;
+}
+
+function handleTouchEnd() {
+    if (!isDragging) return;
+    let diff = startX - currentX;
+    
+    if (diff > 50 && index < items.length - 1) {
+        index++;
+    } else if (diff < -50 && index > 0) {
+        index--;
+    }
+
+    isDragging = false;
+    updateCoverFlow();
+}
+
+document.addEventListener("touchstart", handleTouchStart);
+document.addEventListener("touchmove", handleTouchMove);
+document.addEventListener("touchend", handleTouchEnd);
+
+updateCoverFlow();
 
 /* WhatsApp-Button mit Datum & Uhrzeit
 const whatsappBtn = document.getElementById('whatsapp-btn');
