@@ -166,11 +166,15 @@ let currentX = 0;
 let isDragging = false;
 
 function updateCoverFlow() {
+    const containerWidth = document.querySelector("#coverFlow").offsetWidth;
+    const itemWidth = items[0].offsetWidth; // Breite einer einzelnen Karte
+    const centerOffset = (containerWidth - itemWidth) / 2; // Berechnung der Mitte
+
     items.forEach((item, i) => {
         let offset = i - index;
         let scale = 1 - Math.abs(offset) * 0.1;
         let rotateY = offset * 30;
-        let translateX = offset * 60;
+        let translateX = offset * 200 - centerOffset; // Zentrierung
 
         item.style.transform = `translateX(${translateX}px) scale(${scale}) rotateY(${rotateY}deg)`;
         item.style.opacity = 1 - Math.abs(offset) * 0.3;
