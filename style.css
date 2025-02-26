@@ -273,8 +273,6 @@ input:focus, select:focus {
     /* Prevent scrolling */
 html, body {
     overflow-x: hidden;
-    background: black;
-    perspective: 1200px;
 }
     
     .coverflow-container {
@@ -282,12 +280,11 @@ html, body {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 80vw;
-        height: 300px;
+        width: 100vw;
+        height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: black;
         perspective: 1200px;
     }
 
