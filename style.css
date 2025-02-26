@@ -250,3 +250,38 @@ input:focus, select:focus {
         border: 2px solid #ffffff;
     }
 }
+@media (orientation: landscape) {
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .offerings {
+        width: 100vw;
+        height: 100vh;
+        overflow-x: auto;
+        overflow-y: hidden;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        scroll-snap-type: x mandatory;
+        white-space: nowrap;
+    }
+
+    .offerings-grid {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .offering-item {
+        flex: 0 0 auto;
+        width: 80vw;
+        scroll-snap-align: center;
+        text-align: center;
+    }
+}
