@@ -158,6 +158,21 @@ if (emailBtn) {
     });
 }
 
+const container = document.querySelector(".offerings");
+const items = document.querySelectorAll(".offering-item");
+
+container.addEventListener("scroll", () => {
+    let center = container.scrollLeft + container.clientWidth / 2;
+    items.forEach(item => {
+        let rect = item.getBoundingClientRect();
+        let itemCenter = rect.left + rect.width / 2;
+        let distance = Math.abs(center - itemCenter);
+        let scale = Math.max(1 - distance / 500, 0.7);
+        let rotateY = (center - itemCenter) / 10;
+
+        item.style.transform = `scale(${scale}) rotateY(${rotateY}deg)`;
+    });
+});
 
 /* WhatsApp-Button mit Datum & Uhrzeit
 const whatsappBtn = document.getElementById('whatsapp-btn');
