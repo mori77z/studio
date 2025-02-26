@@ -171,6 +171,7 @@ function updateCoverFlow() {
         let rotateY = offset * 30;
         let translateX = offset * 50;
 
+        item.style.willChange = "transform";
         item.style.transform = `translateX(${translateX}%) scale(${scale}) rotateY(${rotateY}deg)`;
         item.style.zIndex = -Math.abs(offset);
     });
@@ -189,7 +190,7 @@ function handleTouchMove(e) {
 function handleTouchEnd() {
     if (!isDragging) return;
     let diff = startX - currentX;
-    
+
     if (diff > 50 && index < items.length - 1) {
         index++;
     } else if (diff < -50 && index > 0) {
@@ -197,11 +198,11 @@ function handleTouchEnd() {
     }
 
     isDragging = false;
-    updateCoverFlow();
+    requestAnimationFrame(updateCoverFlow);
 }
 
-document.addEventListener("touchstart", handleTouchStart);
-document.addEventListener("touchmove", handleTouchMove);
+document.addEventListener("touchstart", handleTouchStart, { passive: true });
+document.addEventListener("touchmove", handleTouchMove, { passive: true });
 document.addEventListener("touchend", handleTouchEnd);
 
 updateCoverFlow();
