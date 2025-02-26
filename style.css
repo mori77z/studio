@@ -7,7 +7,7 @@ body {
     padding: 0;
     overflow-x: hidden;
 }
-    .cover-container {
+    .coverflow-container {
         display: none;
     }
 .header-container {
@@ -187,7 +187,7 @@ input:focus, select:focus {
     .header-container {
         padding: 20px;
     }
-        .cover-container {
+        .coverflow-container {
         display: none;
     }
     .logo a {
@@ -231,7 +231,7 @@ input:focus, select:focus {
         background-color: #000;
         color: #fff;
     }
-    .cover-container {
+    .coverflow-container {
         display: none;
     }
     .logo a {
@@ -259,65 +259,43 @@ input:focus, select:focus {
     }
 }
 @media (orientation: landscape) {
-    body {
-        background: black;
-        color: white;
-        font-family: Helvetica, Arial, sans-serif;
-        font-weight: 200;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        perspective: 1500px;
-    }
-    .cover-container {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    white-space: nowrap;
+.coverflow-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: black;
+}
+
+.coverflow-track {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease-out;
+    perspective: 800px;
+}
+
+.coverflow-item {
+    position: relative;
+    flex: 0 0 150px;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    transform-origin: center;
+    will-change: transform;
+}
+
+.coverflow-item img {
     width: 100%;
-    height: 200px;
-    user-select: none;
-    }
+    border-radius: 10px;
+}
 
-    .header-container, .imprint-link, .contact-card, .offerings-header, .site-title {
-        display: none;
-    }
-
-    .offerings {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        width: 100vw;
-        height: 60vh;
-        position: relative;
-    }
-
-    .offering-item {
-        position: absolute;
-        width: 40vh;
-        height: 40vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.5s ease-out;
-    }
-
-    .offering-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 5px;
-    }
-
-    .offering-item p {
-        margin-top: 10px;
-        text-align: center;
-        font-size: 1.2rem;
-    }
+.coverflow-item p {
+    text-align: center;
+    color: white;
+    font-family: 'Instrument Sans', sans-serif;
+}
 }
