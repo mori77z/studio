@@ -261,33 +261,32 @@ input:focus, select:focus {
         justify-content: center;
         align-items: center;
         height: 100vh;
-        perspective: 1200px;
+        perspective: 1500px;
     }
 
-    .header-container, .imprint-link, .contact-card, .offerings-header {
+    .header-container, .imprint-link, .contact-card, .offerings-header, .site-title {
         display: none;
     }
 
     .offerings {
         display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        gap: 10vw;
-        transform-style: preserve-3d;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 60vh;
+        position: relative;
     }
 
     .offering-item {
-        flex: 0 0 auto;
+        position: absolute;
         width: 40vh;
         height: 40vh;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        scroll-snap-align: center;
-        transform-origin: center;
-        transition: transform 0.3s ease-out;
+        transition: transform 0.5s ease-out;
     }
 
     .offering-item img {
