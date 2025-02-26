@@ -158,7 +158,8 @@ if (emailBtn) {
     });
 }
 
-const items = document.querySelectorAll(".offering-item");
+const coverFlow = document.querySelector("#coverFlow .coverflow-track");
+const items = document.querySelectorAll("#coverFlow .coverflow-item");
 let index = Math.floor(items.length / 2);
 let startX = 0;
 let currentX = 0;
@@ -169,15 +170,16 @@ function updateCoverFlow() {
         let offset = i - index;
         let scale = 1 - Math.abs(offset) * 0.1;
         let rotateY = offset * 30;
-        let translateX = offset * 50;
+        let translateX = offset * 60;
 
-        item.style.willChange = "transform";
-        item.style.transform = `translateX(${translateX}%) scale(${scale}) rotateY(${rotateY}deg)`;
+        item.style.transform = `translateX(${translateX}px) scale(${scale}) rotateY(${rotateY}deg)`;
+        item.style.opacity = 1 - Math.abs(offset) * 0.3;
         item.style.zIndex = -Math.abs(offset);
     });
 }
 
 function handleTouchStart(e) {
+    if (!e.target.closest("#coverFlow")) return;
     startX = e.touches[0].clientX;
     isDragging = true;
 }
@@ -201,9 +203,10 @@ function handleTouchEnd() {
     requestAnimationFrame(updateCoverFlow);
 }
 
-document.addEventListener("touchstart", handleTouchStart, { passive: true });
-document.addEventListener("touchmove", handleTouchMove, { passive: true });
-document.addEventListener("touchend", handleTouchEnd);
+// Touch-Event nur für Cover Flow aktivieren
+document.querySelector("#coverFlow").addEventListener("touchstart", handleTouchStart, { passive: true });
+document.querySelector("#coverFlow").addEventListener("touchmove", handleTouchMove, { passive: true });
+document.querySelector("#coverFlow").addEventListener("touchend", handleTouchEnd);
 
 updateCoverFlow();
 
