@@ -259,6 +259,11 @@ input:focus, select:focus {
     }
 }
 @media (orientation: landscape) {
+    
+    .header-container, .imprint-link, .contact-card, .offerings-header, .site-title {
+    display: none;
+    }
+    
 .coverflow-container {
     position: relative;
     width: 100%;
@@ -296,6 +301,7 @@ input:focus, select:focus {
 .coverflow-item p {
     text-align: center;
     color: white;
-    font-family: 'Instrument Sans', sans-serif;
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 200;
 }
 }
