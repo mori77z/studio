@@ -150,8 +150,8 @@ if (emailBtn) {
 
         let subject = isGerman ? "Anfrage für einen Call" : "Request for a first Call";
         let body = isGerman
-            ? `Hey Moritz,%0D%0A%0D%0AIch würde gerne ein Gespräch vereinbaren am ${formattedDate} um ${selectedTime}.%0D%0A%0D%0ALiebe Grüße,%0D%0A[Ihr Name / Firma / E-Mail-Adresse]`
-            : `Hey Moritz,%0D%0A%0D%0AI would like to schedule a call with you on ${formattedDate} at ${selectedTime}.%0D%0A%0D%0ABest regards,%0D%0A[Your Name / Company / Email Address]`;
+            ? `Hey Moritz,<br><br>Ich würde gerne ein Gespräch vereinbaren am ${formattedDate} um ${selectedTime}.<br><br>Liebe Grüße,<br>[Ihr Name / Firma / E-Mail-Adresse]`
+            : `Hey Moritz,<br><br>I would like to schedule a call with you on ${formattedDate} at ${selectedTime}.<br><br>Best regards,<br>[Your Name / Company / Email Address]`;
 
         let mailtoLink = `mailto:moritzgg99@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         window.location.href = mailtoLink;
