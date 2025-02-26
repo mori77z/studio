@@ -260,7 +260,7 @@ input:focus, select:focus {
 }
 @media (orientation: landscape) {
     
-    .header-container, .imprint-link, .contact-card, .offerings-header, .site-title {
+    .header-container, .offerings, .imprint-link, .contact-card, .offerings-header, .site-title {
     display: none;
     }
     
