@@ -54,6 +54,43 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    const images = document.querySelectorAll(".offering-item img");
+    if (images.length === 0) {
+        console.warn("No images found for zoom functionality.");
+        return;
+    }
+
+    const zoomedContainer = document.createElement("div");
+    const zoomedImage = document.createElement("img");
+
+    zoomedContainer.classList.add("zoomed-container");
+    zoomedImage.classList.add("zoomed-image");
+    zoomedContainer.appendChild(zoomedImage);
+    document.body.appendChild(zoomedContainer);
+
+    function openZoomedImage(src) {
+        zoomedImage.src = src;
+        zoomedImage.classList.add("active");
+        zoomedContainer.classList.add("active");
+    }
+
+    function closeZoomedImage() {
+        zoomedImage.classList.remove("active");
+        zoomedContainer.classList.remove("active");
+    }
+
+    images.forEach((img) => {
+        img.addEventListener("click", () => {
+            openZoomedImage(img.src);
+        });
+    });
+
+    zoomedContainer.addEventListener("click", (e) => {
+        if (e.target === zoomedContainer || e.target === zoomedImage) {
+            closeZoomedImage();
+        }
+    });
+
     // Keep the clock ticking
     function updateClock() {
         const now = new Date();
