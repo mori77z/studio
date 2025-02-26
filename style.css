@@ -273,13 +273,15 @@ input:focus, select:focus {
     
     /* Prevent scrolling */
 html, body {
-    overflow: hidden;
+    overflow-y: hidden;
 }
     
     .coverflow-container {
         position: absolute;
         top: 50%;
         left: 50%;
+        width: 80vw;
+        height: 95vh;
         transform: translate(-50%, -50%);
         display: flex;
         align-items: center;
@@ -329,7 +331,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 50%;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
     transform: scaleY(-1);
     opacity: 0.5;
     pointer-events: none;
