@@ -259,25 +259,46 @@ input:focus, select:focus {
     }
 }
     
-@media (orientation: landscape) {
+@media (min-width: 1025px), (orientation: portrait) {
+    .coverflow-container {
+        display: none !important;
+    }
+}
+
+@media (max-width: 1024px) and (orientation: landscape) {
     .header-container, .offerings, .imprint-link, .site-title {
         display: none;
     }
-
-.coverflow-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80vw;
-    height: 300px;
+    
+    /* Prevent scrolling */
+html, body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background: black;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: black;
-    perspective: 1000px;
+    height: 100vh;
+    width: 100vw;
+    perspective: 1200px;
 }
+    
+    .coverflow-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80vw;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: black;
+        perspective: 1200px;
+    }
 
+/* Track that holds the covers */
 .coverflow-track {
     display: flex;
     align-items: center;
@@ -285,22 +306,46 @@ input:focus, select:focus {
     transition: transform 0.5s ease-out;
 }
 
+/* Cover Flow items (album covers) */
 .coverflow-item {
     position: absolute;
     width: 200px;
     height: 200px;
     transition: transform 0.5s ease-out, opacity 0.5s ease-out;
     will-change: transform, opacity;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
 }
 
+/* Album covers */
 .coverflow-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
+/* Hidden covers (far left & right) */
 .coverflow-item.hidden {
     opacity: 0;
+    pointer-events: none;
+}
+
+/* 3D depth effect */
+.coverflow-item {
+    transform-origin: center;
+    filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.5));
+}
+
+/* Reflection effect below covers */
+.coverflow-item::after {
+    content: "";
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+    transform: scaleY(-1);
+    opacity: 0.5;
     pointer-events: none;
 }
 }
