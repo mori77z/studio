@@ -165,19 +165,21 @@ let startX = 0;
 let currentX = 0;
 let isDragging = false;
 
+const flipSound = new Audio("flip.mp3"); // Füge deine Sounddatei ein
+
 function updateCoverFlow() {
     const containerWidth = document.querySelector("#coverFlow").offsetWidth;
-    const itemWidth = items[0].offsetWidth; // Breite einer einzelnen Karte
-    const centerOffset = (containerWidth - itemWidth) / 2; // Berechnung der Mitte
+    const itemWidth = items[0].offsetWidth;
+    const centerOffset = (containerWidth - itemWidth) / 2;
 
     items.forEach((item, i) => {
         let offset = i - index;
         let scale = 1 - Math.abs(offset) * 0.1;
-        let rotateY = offset * 30;
-        let translateX = offset * 200 - centerOffset; // Zentrierung
+        let rotateY = offset * 25; /* Weniger Rotation */
+        let translateX = offset * 220 - centerOffset; 
 
         item.style.transform = `translateX(${translateX}px) scale(${scale}) rotateY(${rotateY}deg)`;
-        item.style.opacity = 1 - Math.abs(offset) * 0.3;
+        item.style.opacity = 1 - Math.abs(offset) * 0.4;
         item.style.zIndex = -Math.abs(offset);
     });
 }
@@ -199,13 +201,21 @@ function handleTouchEnd() {
 
     if (diff > 50 && index < items.length - 1) {
         index++;
+        flipSound.play(); // Sound abspielen
     } else if (diff < -50 && index > 0) {
         index--;
+        flipSound.play(); // Sound abspielen
     }
 
     isDragging = false;
     requestAnimationFrame(updateCoverFlow);
 }
+
+coverFlow.addEventListener("touchstart", handleTouchStart);
+coverFlow.addEventListener("touchmove", handleTouchMove);
+coverFlow.addEventListener("touchend", handleTouchEnd);
+
+updateCoverFlow();
 
 // Touch-Event nur für Cover Flow aktivieren
 document.querySelector("#coverFlow").addEventListener("touchstart", handleTouchStart, { passive: true });
