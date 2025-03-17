@@ -89,13 +89,14 @@ nav a.active {
 .offerings {
     display: flex;
     flex-direction: column;
-    margin-bottom: 100px;
-    padding: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .offerings-header {
     text-align: left;
-    margin-bottom: 20px;
 }
 
 h4 {
@@ -114,7 +115,7 @@ h4 {
 .offering-item {
     font-weight: 300;
     letter-spacing: -1px;
-    font-size: 24px;
+    font-size: 18px;
     text-align: left;
     display: flex; 
     flex-direction: column;
@@ -130,6 +131,60 @@ h4 {
     /*object-fit: cover;
     object-position: top;*/
 }
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);    
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    width: 340px;
+    top: 120px;
+    padding: 10px;
+    border-radius: 10px;
+    text-shadow: -2px -2px 0px white, 2px 2px 0px white, -2px 2px 0px white, 2px -2px 0px white;
+    border: 2px solid #222;
+    box-shadow: 0 0 0 1px white, 0 0 0 2px black;
+}
+
+.popup.active {
+    display: block;
+}
+
+.pricing-container {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.package {
+    flex: 1;
+    text-align: left;
+}
+.package ul {
+    list-style: none;
+    padding: 0;
+}
+
+.package ul li {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.pricing-image {
+    width: 80px;
+    aspect-ratio: 1 / 1;
+    opacity: 0.6;
+    border-radius: 8px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 10px;
+}
+
 .zoomed-container {
     position: fixed; 
     top: 0;
@@ -231,22 +286,137 @@ input:focus, select:focus {
     text-decoration: none;
 }
 
-/*.coverflow-container {
+.coverflow-container {
     display: none;
-}*/
-
-html, body {
-    touch-action: none; 
-    overscroll-behavior: none; 
 }
 
+@media (min-width: 600px) {
+    .header-container {
+        padding: 20px;
+    }
     .coverflow-container {
-        position: relative;
-        /*top: 50%;
-        left: 50%;*/
-        width: 100%;
+        display: none;
+    }
+    .logo a {
+        font-size: 64px;
+        letter-spacing: -4px;
+    }
+    .site-title {
+        font-size: 36px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    h4 {
+        font-size: 28px;
+    }
+    
+    .offerings {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .offerings-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .offering-item {
+        font-size: 20px;
+    }
+
+
+    .popup {
+        font-size: 20px;
+        top: 180px;
+        width: 800px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .pricing-container {
+        gap: 20px;
+    }   
+    .pricing-image {
+        width: 200px;
+    }
+    .package {
+        max-width: 30%;
+    }
+
+    .contact-card {
+        font-size: 24px;
+    }
+    .text-me {
+        font-size: 20px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #000;
+        color: #fff;
+    }
+    .coverflow-container {
+        display: none;
+    }
+    .logo a {
+        color: white;
+    }
+    nav a {
+        color: white;
+    }
+
+    .popup {
+        background: rgba(255, 255, 255, 0.2);
+        text-shadow: -2px -2px 0px black, 2px 2px 0px black, -2px 2px 0px black, 2px -2px 0px black;
+    }
+    .contact-details a {
+        color: white;
+    }
+    .toggle-label {
+      color: white;
+    }
+    .imprint-link a {
+        color: white;
+    }
+    input, select {
+        border: 2px solid #ffffff;
+    }
+    .whatsapp-button {
+        background: #222;
+        color: white;
+        border: 2px solid #ffffff;
+    }
+
+}
+    
+@media (min-width: 1025px), (orientation: portrait) {
+    .coverflow-container {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) and (orientation: landscape) {
+    .header-container, .offerings, .imprint-link, .site-title {
+        display: none;
+    }
+    
+    html, body {
+    overflow: hidden !important;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    touch-action: none; 
+    overscroll-behavior: none; 
+    }
+
+    .coverflow-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 700px;
         height: 350px;
-        /*transform: translate(-50%, -50%);*/
+        transform: translate(-50%, -50%);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -286,171 +456,4 @@ html, body {
     opacity: 0;
     pointer-events: none;
 }
-
-.popup {
-    display: none;
-    position: absolute;
-    top: 120px;
-    left: 50%;
-    transform: translateX(-50%);    
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    background: rgba(0, 0, 0, 0.2);
-    z-index: 10;
-    width: 340px;
-    top: 120px;
-    padding: 10px;
-    border-radius: 10px;
-    text-shadow: -2px -2px 0px white, 2px 2px 0px white, -2px 2px 0px white, 2px -2px 0px white;
-    border: 2px solid #222;
-    box-shadow: 0 0 0 1px white, 0 0 0 2px black;
 }
-.popup.active {
-    display: block;
-}
-
-.pricing-container {
-    display: flex;
-    gap: 10px;
-    justify-content: space-between;
-}
-
-.package {
-    flex: 1;
-    text-align: left;
-}
-.package ul {
-    list-style: none;
-    padding: 0;
-}
-
-.package ul li {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.pricing-image {
-    width: 80px;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    display: block;
-    margin-bottom: 10px;
-}
-
-@media (min-width: 600px) {
-    .header-container {
-        padding: 20px;
-    }
-    /*.coverflow-container {
-        display: none;
-    }*/
-    .logo a {
-        font-size: 64px;
-        letter-spacing: -4px;
-    }
-    .site-title {
-        font-size: 36px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
-    h4 {
-        font-size: 28px;
-    }
-    
-    .offerings {
-        padding: 20px;
-    }
-
-    .offerings-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-    }
-
-    .offering-item {
-        font-size: 22px;
-    }
-
-    .popup {
-        font-size: 20px;
-        top: 180px;
-        width: 800px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-    .pricing-container {
-        gap: 20px;
-    }   
-    .pricing-image {
-        width: 200px;
-    }
-    .package {
-        max-width: 30%;
-    }
-
-    .contact-card {
-        font-size: 24px;
-    }
-    .text-me {
-        font-size: 20px;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #000;
-        color: #fff;
-    }
-    /*.coverflow-container {
-        display: none;
-    }*/
-    .logo a {
-        color: white;
-    }
-    nav a {
-        color: white;
-    }
-    .popup {
-        background: rgba(255, 255, 255, 0.2);
-        text-shadow: -2px -2px 0px black, 2px 2px 0px black, -2px 2px 0px black, 2px -2px 0px black;
-    }
-    .contact-details a {
-        color: white;
-    }
-    .toggle-label {
-      color: white;
-    }
-    .imprint-link a {
-        color: white;
-    }
-    input, select {
-        border: 2px solid #ffffff;
-    }
-    .whatsapp-button {
-        background: #222;
-        color: white;
-        border: 2px solid #ffffff;
-    }
-
-}
-    
-/*@media (min-width: 1025px), (orientation: portrait) {
-    .coverflow-container {
-        display: none;
-    }
-}
-
-@media (max-width: 1024px) and (orientation: landscape) {
-    .header-container, .offerings, .imprint-link, .site-title {
-        display: none;
-    }
-    
-html, body {
-    overflow: hidden !important;
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    touch-action: none; 
-    overscroll-behavior: none; 
-}
-*/  
