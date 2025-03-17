@@ -21,17 +21,20 @@ document.addEventListener("DOMContentLoaded", function () {
         return symbols[Math.floor(Math.random() * symbols.length)];
     }
 
-    function glitchText(element, originalText, duration = 300) {
+    function glitchText(element, originalHTML, duration = 300) {
         if (isFlipping) return;
         isFlipping = true;
 
-        // Generate a string with exactly 10 random Unicode symbols
-        let scrambledText = Array.from({ length: 7 }, () => randomChar()).join("");
+        // Erzeuge zufällige Symbole mit Leerzeichen
+        let smallGlitch = `<span class="studio-tag">${randomChar()} ${randomChar()} ${randomChar()}</span>`;
+        let moritzGlitch = `${randomChar()} ${randomChar()} ${randomChar()}`;
+        let gaussGlitch = `${randomChar()} ${randomChar()} ${randomChar()} ${randomChar()}`;
 
-        element.textContent = scrambledText; // Apply the 10-symbol glitch effect
+        // Füge sie in den Text ein
+        element.innerHTML = `${smallGlitch} ${moritzGlitch} ${gaussGlitch}`;
 
         setTimeout(() => {
-            element.textContent = originalText; // Restore original text after duration
+            element.innerHTML = originalHTML; // Originalen Text wiederherstellen
             isFlipping = false;
         }, duration);
     }
@@ -44,7 +47,10 @@ document.addEventListener("DOMContentLoaded", function () {
             requestAnimationFrame(() => {
                 let currentScroll = window.scrollY;
                 if (Math.abs(currentScroll - lastScrollTop) > 50) {
-                    glitchText(moritzElement, "Studio Mritz Gauss");
+                    glitchText(
+                        moritzElement,
+                        `<span class="studio-tag">Studio</span> Mritz Gauss`
+                    );
                     lastScrollTop = currentScroll;
                 }
                 ticking = false;
