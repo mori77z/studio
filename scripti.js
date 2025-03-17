@@ -25,16 +25,16 @@ document.addEventListener("DOMContentLoaded", function () {
         if (isFlipping) return;
         isFlipping = true;
 
-        // Erzeuge zufällige Symbole mit Leerzeichen und expliziter Styling-Klasse
-        let smallGlitch = `<span class="studio-tag">${randomChar()} ${randomChar()} ${randomChar()}</span>`;
-        let moritzGlitch = `<span class="glitch-effect">${randomChar()} ${randomChar()} ${randomChar()}</span>`;
-        let gaussGlitch = `<span class="glitch-effect">${randomChar()} ${randomChar()} ${randomChar()} ${randomChar()}</span>`;
+        // Add inline styles for letter-spacing to ensure they apply
+        let smallGlitch = `<span class="studio-tag" style="letter-spacing: 0px;">${randomChar()} ${randomChar()} ${randomChar()}</span>`;
+        let moritzGlitch = `<span class="glitch-effect" style="letter-spacing: 2px;">${randomChar()} ${randomChar()} ${randomChar()}</span>`;
+        let gaussGlitch = `<span class="glitch-effect" style="letter-spacing: 2px;">${randomChar()} ${randomChar()} ${randomChar()} ${randomChar()}</span>`;
 
-        // Setze die neue HTML-Struktur mit expliziten Klassen für Styles
+        // Replace content with glitch text
         element.innerHTML = `${smallGlitch} ${moritzGlitch} ${gaussGlitch}`;
 
         setTimeout(() => {
-            element.innerHTML = originalHTML; // Originalen Text wiederherstellen
+            element.innerHTML = originalHTML; // Restore original text
             isFlipping = false;
         }, duration);
     }
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (Math.abs(currentScroll - lastScrollTop) > 50) {
                     glitchText(
                         moritzElement,
-                        `<span class="studio-tag">Studio</span> Mritz Gauss`
+                        `<span class="studio-tag" style="letter-spacing: 0px;">Studio</span> <span style="letter-spacing: 2px;">Mritz Gauss</span>`
                     );
                     lastScrollTop = currentScroll;
                 }
