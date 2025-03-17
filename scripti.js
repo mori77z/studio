@@ -29,7 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // Generate a glitch effect while preserving letter-spacing
         let scrambledHTML = `
             <span class="studio-tag">${randomChar()}${randomChar()}${randomChar()}</span>
-            <span style="letter-spacing: -2px;">${randomChar()}${randomChar()}${randomChar()}${randomChar()}${randomChar()}${randomChar()}</span>
+            <span class="glitch-effect">${randomChar()}${randomChar()}${randomChar()}${randomChar()}${randomChar()}${randomChar()}</span>
+            <span class="glitch-effect"> ${randomChar()}${randomChar()}${randomChar()}</span>
         `;
 
         element.innerHTML = scrambledHTML;
