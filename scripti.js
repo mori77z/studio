@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (Math.abs(currentScroll - lastScrollTop) > 50) {
                     glitchText(
                         moritzElement,
-                        `<span class="studio-tag" style="letter-spacing: 0px;">Studio</span> <span style="letter-spacing: 2px;">Mritz Gauss</span>`
+                        `<span class="studio-tag" style="letter-spacing: initial;">Studio</span> <span style="letter-spacing: -2px;">Mritz Gauss</span>`
                     );
                     lastScrollTop = currentScroll;
                 }
