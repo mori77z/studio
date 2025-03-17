@@ -92,7 +92,7 @@ nav a.active {
 
 .studio-tag {
     font-size: 12px;
-    letter-spacing: 0px;
+    letter-spacing: initial;
     }
 
 .offerings {
