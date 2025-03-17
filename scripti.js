@@ -243,6 +243,34 @@ window.addEventListener("touchend", handleSwipeEnd);
 
 updateCoverFlow();
 
+document.addEventListener("DOMContentLoaded", function () {
+    const links = document.querySelectorAll(".menu a");
+    const popups = document.querySelectorAll(".popup");
+
+    links.forEach(link => {
+        link.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            // Vorherige aktive Popups schließen
+            popups.forEach(popup => popup.classList.remove("active"));
+
+            // Neues Popup öffnen
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+                target.classList.add("active");
+            }
+        });
+    });
+
+    // Klicken außerhalb des Popups schließt es
+    document.addEventListener("click", function (event) {
+        if (!event.target.closest(".popup") && !event.target.closest(".menu a")) {
+            popups.forEach(popup => popup.classList.remove("active"));
+        }
+    });
+});
+
+
 /* WhatsApp-Button mit Datum & Uhrzeit
 const whatsappBtn = document.getElementById('whatsapp-btn');
 
