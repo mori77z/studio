@@ -15,26 +15,28 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     let isFlipping = false;
+    const originalHTML = moritzElement.innerHTML; // Store original styled HTML
 
     function randomChar() {
-        const symbols = "✪✹❦☭★❥✱♫♠♞♥";
+        const symbols = "✪✹❦♬♪♩★❥✱♫♠♞♥";
         return symbols[Math.floor(Math.random() * symbols.length)];
     }
 
-    function glitchText(element, originalHTML, duration = 300) {
+    function glitchText(element, duration = 300) {
         if (isFlipping) return;
         isFlipping = true;
 
-        // Add inline styles for letter-spacing to ensure they apply
-        let smallGlitch = `<span class="studio-tag" style="letter-spacing: 0px;">${randomChar()} ${randomChar()} ${randomChar()}</span>`;
-        let moritzGlitch = `<span style="letter-spacing: -2px;">${randomChar()} ${randomChar()} ${randomChar()}</span>`;
-        let gaussGlitch = `<span style="letter-spacing: -2px;">${randomChar()} ${randomChar()} ${randomChar()} ${randomChar()}</span>`;
+        // Generate a glitch effect while preserving letter-spacing
+        let scrambledHTML = `
+            <span class="studio-tag">${randomChar()} ${randomChar()} ${randomChar()}</span>
+            <span style="letter-spacing: -2px;">${randomChar()} ${randomChar()} ${randomChar()}</span>
+            <span style="letter-spacing: -2px;">${randomChar()} ${randomChar()} ${randomChar()} ${randomChar()}</span>
+        `;
 
-        // Replace content with glitch text
-        element.innerHTML = `${smallGlitch} ${moritzGlitch} ${gaussGlitch}`;
+        element.innerHTML = scrambledHTML;
 
         setTimeout(() => {
-            element.innerHTML = originalHTML; // Restore original text
+            element.innerHTML = originalHTML; // Restore original styled HTML
             isFlipping = false;
         }, duration);
     }
@@ -47,10 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
             requestAnimationFrame(() => {
                 let currentScroll = window.scrollY;
                 if (Math.abs(currentScroll - lastScrollTop) > 50) {
-                    glitchText(
-                        moritzElement,
-                        `<span class="studio-tag" style="letter-spacing: initial;">Studio</span> <span style="letter-spacing: -2px;">Mritz Gauss</span>`
-                    );
+                    glitchText(moritzElement);
                     lastScrollTop = currentScroll;
                 }
                 ticking = false;
