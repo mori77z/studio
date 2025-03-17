@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
         isFlipping = true;
 
         // Erzeuge zufällige Symbole mit Leerzeichen und expliziter Styling-Klasse
-        let smallGlitch = `<span class="studio-tag glitch-effect">${randomChar()} ${randomChar()} ${randomChar()}</span>`;
+        let smallGlitch = `<span class="studio-tag">${randomChar()} ${randomChar()} ${randomChar()}</span>`;
         let moritzGlitch = `<span class="glitch-effect">${randomChar()} ${randomChar()} ${randomChar()}</span>`;
         let gaussGlitch = `<span class="glitch-effect">${randomChar()} ${randomChar()} ${randomChar()} ${randomChar()}</span>`;
 
