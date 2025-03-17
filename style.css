@@ -69,11 +69,7 @@ nav a.active {
     box-sizing: border-box; 
     text-decoration: none;
     cursor: pointer;
-}
-
-.glitch-effect {
-    letter-spacing: -2px;
-}
+}k
 
 .logo a:hover {
     font-family: Times, serif;
