@@ -25,12 +25,12 @@ document.addEventListener("DOMContentLoaded", function () {
         if (isFlipping) return;
         isFlipping = true;
 
-        // Erzeuge zufällige Symbole mit Leerzeichen
-        let smallGlitch = `<span class="studio-tag">${randomChar()} ${randomChar()} ${randomChar()}</span>`;
-        let moritzGlitch = `${randomChar()} ${randomChar()} ${randomChar()}`;
-        let gaussGlitch = `${randomChar()} ${randomChar()} ${randomChar()} ${randomChar()}`;
+        // Erzeuge zufällige Symbole mit Leerzeichen und expliziter Styling-Klasse
+        let smallGlitch = `<span class="studio-tag glitch-effect">${randomChar()} ${randomChar()} ${randomChar()}</span>`;
+        let moritzGlitch = `<span class="glitch-effect">${randomChar()} ${randomChar()} ${randomChar()}</span>`;
+        let gaussGlitch = `<span class="glitch-effect">${randomChar()} ${randomChar()} ${randomChar()} ${randomChar()}</span>`;
 
-        // Füge sie in den Text ein
+        // Setze die neue HTML-Struktur mit expliziten Klassen für Styles
         element.innerHTML = `${smallGlitch} ${moritzGlitch} ${gaussGlitch}`;
 
         setTimeout(() => {
