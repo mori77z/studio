@@ -191,7 +191,7 @@ h4 {
 }
 
 .pricing-image {
-    width: 80px;
+    width: 25%;
     aspect-ratio: 1 / 1;
     opacity: 0.6;
     border-radius: 8px;
@@ -363,7 +363,7 @@ input:focus, select:focus {
         gap: 20px;
     }   
     .pricing-image {
-        width: 200px;
+        width: 75%;
     }
     .package {
         max-width: 30%;
