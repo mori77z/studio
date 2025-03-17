@@ -191,7 +191,7 @@ h4 {
 }
 
 .pricing-image {
-    width: 50%;
+    width: 100%;
     aspect-ratio: 1 / 1;
     opacity: 0.6;
     border-radius: 8px;
@@ -219,12 +219,11 @@ h4 {
 }
 
 .zoomed-container.active {
-    display: flex;
+    display: none;
 }
 
 .zoomed-image {
-    max-width: 70vw;
-    max-height: 70vh;
+    width: 90vw;
     object-fit: contain;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
@@ -350,6 +349,9 @@ input:focus, select:focus {
         font-size: 20px;
     }
 
+.zoomed-container.active {
+    display: flex;
+}
 
     .popup {
         font-size: 20px;
@@ -362,9 +364,7 @@ input:focus, select:focus {
     .pricing-container {
         gap: 20px;
     }   
-    .pricing-image {
-        width: 75%;
-    }
+
     .package {
         max-width: 30%;
     }
