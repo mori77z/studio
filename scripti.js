@@ -26,9 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
         isFlipping = true;
 
         // Add inline styles for letter-spacing to ensure they apply
-        let smallGlitch = `<span class="studio-tag" style="letter-spacing: 0px;">${randomChar()} ${randomChar()} ${randomChar()}</span>`;
-        let moritzGlitch = `<span class="glitch-effect" style="letter-spacing: 2px;">${randomChar()} ${randomChar()} ${randomChar()}</span>`;
-        let gaussGlitch = `<span class="glitch-effect" style="letter-spacing: 2px;">${randomChar()} ${randomChar()} ${randomChar()} ${randomChar()}</span>`;
+        let smallGlitch = `<span class="studio-tag" style="letter-spacing: initial;">${randomChar()} ${randomChar()} ${randomChar()}</span>`;
+        let moritzGlitch = `<span class="glitch-effect" style="letter-spacing: -2px;">${randomChar()} ${randomChar()} ${randomChar()}</span>`;
+        let gaussGlitch = `<span class="glitch-effect" style="letter-spacing: -2px;">${randomChar()} ${randomChar()} ${randomChar()} ${randomChar()}</span>`;
 
         // Replace content with glitch text
         element.innerHTML = `${smallGlitch} ${moritzGlitch} ${gaussGlitch}`;
