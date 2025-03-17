@@ -71,6 +71,10 @@ nav a.active {
     cursor: pointer;
 }
 
+.glitch-effect {
+    letter-spacing: -2px;
+}
+
 .logo a:hover {
     font-family: Times, serif;
     font-style: italic;
