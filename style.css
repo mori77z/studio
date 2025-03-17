@@ -151,11 +151,12 @@ h4 {
     top: 120px;
     padding: 10px;
     border-radius: 10px;
+    color: white;
     text-shadow:  
-      -1px -1px 5px rgba(255, 255, 255, 0.8),  
-       1px  1px 5px rgba(255, 255, 255, 0.8),  
-      -1px  1px 5px rgba(255, 255, 255, 0.8),  
-       1px -1px 5px rgba(255, 255, 255, 0.8);
+      -1px -1px 1px rgba(255, 255, 255, 0.8),  
+       1px  1px 1px rgba(255, 255, 255, 0.8),  
+      -1px  1px 1px rgba(255, 255, 255, 0.8),  
+       1px -1px 1px rgba(255, 255, 255, 0.8);
     border: 2px solid #222;
     box-shadow: 0 0 0 1px white, 0 0 0 2px black;
 }
@@ -192,6 +193,11 @@ h4 {
     object-fit: cover;
     display: block;
     margin-bottom: 10px;
+    box-shadow: 
+        -1px -1px 1px rgba(255, 255, 255, 0.8),
+         1px  1px 1px rgba(255, 255, 255, 0.8),
+        -1px  1px 1px rgba(255, 255, 255, 0.8),
+         1px -1px 1px rgba(255, 255, 255, 0.8);
 }
 
 .zoomed-container {
@@ -382,12 +388,22 @@ input:focus, select:focus {
 
     .popup {
         background: rgba(255, 255, 255, 0.2);
+        color: black;
         text-shadow:  
-          -1px -1px 5px rgba(255, 255, 255, 1),  
-           1px  1px 5px rgba(255, 255, 255, 1),  
-          -1px  1px 5px rgba(255, 255, 255, 1),  
-           1px -1px 5px rgba(255, 255, 255, 1);
+          -1px -1px 1px rgba(0, 0, 0, 0.8),  
+           1px  1px 1px rgba(0, 0, 0, 0.8),  
+          -1px  1px 1px rgba(0, 0, 0, 0.8),  
+           1px -1px 1px rgba(0, 0, 0, 0.8);
     }
+    
+    .pricing-image {
+    box-shadow:  
+        -1px -1px 1px rgba(0, 0, 0, 0.8),  
+         1px  1px 1px rgba(0, 0, 0, 0.8),  
+        -1px  1px 1px rgba(0, 0, 0, 0.8),  
+         1px -1px 1px rgba(0, 0, 0, 0.8);
+}
+    
     .contact-details a {
         color: white;
     }
