@@ -21,22 +21,20 @@ document.addEventListener("DOMContentLoaded", function () {
         return symbols[Math.floor(Math.random() * symbols.length)];
     }
 
-    function glitchText(element, originalText, duration = 300) {
+    function glitchText(element, originalHTML, duration = 300) {
         if (isFlipping) return;
         isFlipping = true;
 
-        // Erzeuge eine Zeichenkette mit genau 10 zufälligen Unicode-Symbolen
-        let randomChars = Array.from({ length: 10 }, () => randomChar());
+        // Add inline styles for letter-spacing to ensure they apply
+        let smallGlitch = `<span class="studio-tag" style="letter-spacing: 0px;">${randomChar()} ${randomChar()} ${randomChar()}</span>`;
+        let moritzGlitch = `<span class="glitch-effect" style="letter-spacing: 2px;">${randomChar()} ${randomChar()} ${randomChar()}</span>`;
+        let gaussGlitch = `<span class="glitch-effect" style="letter-spacing: 2px;">${randomChar()} ${randomChar()} ${randomChar()} ${randomChar()}</span>`;
 
-        // Füge ein Leerzeichen nach dem dritten Zeichen hinzu
-        randomChars.splice(3, 0, " ");
-
-        // Setze die ersten drei Zeichen auf Kleinbuchstaben
-        let scrambledText = randomChars.join("");
-        element.innerHTML = `<span class="studio-tag">${originalText.slice(0, 3)}</span>${scrambledText}`;
+        // Replace content with glitch text
+        element.innerHTML = `${smallGlitch} ${moritzGlitch} ${gaussGlitch}`;
 
         setTimeout(() => {
-            element.textContent = originalText; // Originaltext wiederherstellen
+            element.innerHTML = originalHTML; // Restore original text
             isFlipping = false;
         }, duration);
     }
@@ -49,7 +47,10 @@ document.addEventListener("DOMContentLoaded", function () {
             requestAnimationFrame(() => {
                 let currentScroll = window.scrollY;
                 if (Math.abs(currentScroll - lastScrollTop) > 50) {
-                    glitchText(moritzElement, "<span class="studio-tag">Studio</span>Mritz Gauss");
+                    glitchText(
+                        moritzElement,
+                        `<span class="studio-tag" style="letter-spacing: 0px;">Studio</span> <span style="letter-spacing: 2px;">Mritz Gauss</span>`
+                    );
                     lastScrollTop = currentScroll;
                 }
                 ticking = false;
