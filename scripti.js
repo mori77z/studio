@@ -15,28 +15,23 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     let isFlipping = false;
-    const originalHTML = moritzElement.innerHTML; // Store original styled HTML
 
     function randomChar() {
         const symbols = "✪✹❦♬♪♩★❥✱♫♠♞♥";
         return symbols[Math.floor(Math.random() * symbols.length)];
     }
 
-    function glitchText(element, duration = 300) {
+    function glitchText(element, originalText, duration = 300) {
         if (isFlipping) return;
         isFlipping = true;
 
-        // Generate a glitch effect while preserving letter-spacing
-        let scrambledHTML = `
-            <span class="studio-tag">${randomChar()} ${randomChar()} ${randomChar()}</span>
-            <span style="letter-spacing: -2px;">${randomChar()} ${randomChar()} ${randomChar()}</span>
-            <span style="letter-spacing: -2px;">${randomChar()} ${randomChar()} ${randomChar()} ${randomChar()}</span>
-        `;
+        // Generate a string with exactly 10 random Unicode symbols
+        let scrambledText = Array.from({ length: 10 }, () => randomChar()).join("");
 
-        element.innerHTML = scrambledHTML;
+        element.textContent = scrambledText; // Apply the 10-symbol glitch effect
 
         setTimeout(() => {
-            element.innerHTML = originalHTML; // Restore original styled HTML
+            element.textContent = originalText; // Restore original text after duration
             isFlipping = false;
         }, duration);
     }
@@ -49,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
             requestAnimationFrame(() => {
                 let currentScroll = window.scrollY;
                 if (Math.abs(currentScroll - lastScrollTop) > 50) {
-                    glitchText(moritzElement);
+                    glitchText(moritzElement, "Mritz Gauss");
                     lastScrollTop = currentScroll;
                 }
                 ticking = false;
@@ -57,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
             ticking = true;
         }
     });
-});
 
 document.addEventListener("DOMContentLoaded", function () {
     const textElement = document.querySelector(".text-me");
