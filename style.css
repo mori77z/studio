@@ -69,7 +69,7 @@ nav a.active {
     box-sizing: border-box; 
     text-decoration: none;
     cursor: pointer;
-}k
+}
 
 .logo a:hover {
     font-family: Times, serif;
@@ -89,6 +89,10 @@ nav a.active {
 .studio-tag {
     font-size: 12px;
     letter-spacing: initial;
+    }
+    
+.glitch-effect {
+    letter-spacing: -2px;
     }
 
 .offerings {
@@ -148,6 +152,8 @@ h4 {
     background: rgba(0, 0, 0, 0.2);
     z-index: 10;
     width: 340px;
+    height: 600px;
+    overflow-x: hidden;
     top: 120px;
     padding: 10px;
     border-radius: 10px;
