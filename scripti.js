@@ -9,96 +9,63 @@ function goBack() {
 
 document.addEventListener("DOMContentLoaded", function () {
     const moritzElement = document.querySelector(".moritz");
-    if (!moritzElement) {
-        console.error("Element '.moritz' not found!");
-        return;
-    }
+    const textElement = document.querySelector(".text-me");
+    let isFlippingMoritz = false;
+    let isFlippingText = false;
 
-    let isFlipping = false;
-
-    function randomChar() {
-        const symbols = "✪✹❦♬♪♩★❥✱♫♠♞♥";
+    function randomChar(symbols) {
         return symbols[Math.floor(Math.random() * symbols.length)];
     }
 
-    function glitchText(element, originalText, duration = 300) {
-        if (isFlipping) return;
-        isFlipping = true;
+    // Glitch effect for ".moritz"
+    function glitchTextMoritz(element, originalText, duration = 300) {
+        if (isFlippingMoritz) return;
+        isFlippingMoritz = true;
 
-        // Generate a string with exactly 10 random Unicode symbols
-        let scrambledText = Array.from({ length: 10 }, () => randomChar()).join("");
-
-        element.textContent = scrambledText; // Apply the 10-symbol glitch effect
+        let scrambledText = Array.from({ length: 7 }, () => randomChar("✪✹❦♬♪♩★❥✱♫♠♞♥")).join("");
+        element.textContent = scrambledText;
 
         setTimeout(() => {
-            element.textContent = originalText; // Restore original text after duration
-            isFlipping = false;
+            element.textContent = originalText;
+            isFlippingMoritz = false;
         }, duration);
     }
 
-    let lastScrollTop = 0;
-    let ticking = false;
-
-    window.addEventListener("scroll", function () {
-        if (!ticking) {
-            requestAnimationFrame(() => {
-                let currentScroll = window.scrollY;
-                if (Math.abs(currentScroll - lastScrollTop) > 50) {
-                    glitchText(moritzElement, "Mritz Gauss");
-                    lastScrollTop = currentScroll;
-                }
-                ticking = false;
-            });
-            ticking = true;
-        }
-    });
-
-document.addEventListener("DOMContentLoaded", function () {
-    const textElement = document.querySelector(".text-me");
-    let isFlipping = false;
-
-    function randomChar() {
-        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-        return chars[Math.floor(Math.random() * chars.length)];
-    }
-
-    function glitchText(duration = 300) {
-        if (isFlipping) return; 
-        isFlipping = true;
+    // Glitch effect for ".text-me"
+    function glitchTextTextMe(element, duration = 300) {
+        if (isFlippingText) return;
+        isFlippingText = true;
 
         const textBeforeClock = "Now ";
         const textAfterClock = " is the perfect time to send me a message!";
+        
+        let scrambledBefore = textBeforeClock.split("").map(char => (char === " " ? " " : randomChar("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"))).join("");
+        let scrambledAfter = textAfterClock.split("").map(char => (char === " " ? " " : randomChar("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"))).join("");
 
-        let scrambledBefore = textBeforeClock.split("").map(char => 
-            char === " " ? " " : randomChar()
-        ).join("");
-
-        let scrambledAfter = textAfterClock.split("").map(char => 
-            char === " " ? " " : randomChar()
-        ).join("");
-
-        // Set the new scrambled text while keeping the clock untouched
-        textElement.innerHTML = `
-            ${scrambledBefore}<span id="hours">${document.getElementById('hours').textContent}</span>:<span id="minutes">${document.getElementById('minutes').textContent}</span>:<span id="seconds">${document.getElementById('seconds').textContent}</span>${scrambledAfter}
+        element.innerHTML = `
+            ${scrambledBefore}<span id="hours">${document.getElementById('hours')?.textContent || "00"}</span>:<span id="minutes">${document.getElementById('minutes')?.textContent || "00"}</span>:<span id="seconds">${document.getElementById('seconds')?.textContent || "00"}</span>${scrambledAfter}
         `;
 
         setTimeout(() => {
-            textElement.innerHTML = `
-                Now <span id="hours">${document.getElementById('hours').textContent}</span>:<span id="minutes">${document.getElementById('minutes').textContent}</span>:<span id="seconds">${document.getElementById('seconds').textContent}</span> is the perfect time to send me a message!
+            element.innerHTML = `
+                Now <span id="hours">${document.getElementById('hours')?.textContent || "00"}</span>:<span id="minutes">${document.getElementById('minutes')?.textContent || "00"}</span>:<span id="seconds">${document.getElementById('seconds')?.textContent || "00"}</span> is the perfect time to send me a message!
             `;
-            isFlipping = false;
+            isFlippingText = false;
         }, duration);
     }
 
-    // Glitch only on significant scroll (50px movement)
     let lastScrollTop = 0;
+    
+    // Apply glitch effects on scroll (50px movement)
     window.addEventListener("scroll", function () {
         let currentScroll = window.scrollY;
         if (Math.abs(currentScroll - lastScrollTop) > 50) {
-            glitchText();
+            if (moritzElement) glitchTextMoritz(moritzElement, "Mritz Gauss");
+            if (textElement) glitchTextTextMe(textElement);
             lastScrollTop = currentScroll;
         }
     });
+});
 
     const images = document.querySelectorAll(".offering-item img");
     if (images.length === 0) {
