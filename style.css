@@ -88,7 +88,6 @@ nav a.active {
 
 .studio-tag {
     font-size: 12px;
-    letter-spacing: 1px;
     }
 
 .offerings {
@@ -151,7 +150,6 @@ h4 {
     top: 120px;
     padding: 10px;
     border-radius: 10px;
-    color: white;
     text-shadow:  
       -1px -1px 1px rgba(255, 255, 255, 0.8),  
        1px  1px 1px rgba(255, 255, 255, 0.8),  
@@ -388,7 +386,6 @@ input:focus, select:focus {
 
     .popup {
         background: rgba(255, 255, 255, 0.2);
-        color: black;
         text-shadow:  
           -1px -1px 1px rgba(0, 0, 0, 0.8),  
            1px  1px 1px rgba(0, 0, 0, 0.8),  
