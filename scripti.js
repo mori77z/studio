@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Add inline styles for letter-spacing to ensure they apply
         let smallGlitch = `<span class="studio-tag" style="letter-spacing: 0px;">${randomChar()} ${randomChar()} ${randomChar()}</span>`;
-        let moritzGlitch = `<span class="glitch-effect" style="letter-spacing: 2px;">${randomChar()} ${randomChar()} ${randomChar()}</span>`;
-        let gaussGlitch = `<span class="glitch-effect" style="letter-spacing: 2px;">${randomChar()} ${randomChar()} ${randomChar()} ${randomChar()}</span>`;
+        let moritzGlitch = `<span style="letter-spacing: -2px;">${randomChar()} ${randomChar()} ${randomChar()}</span>`;
+        let gaussGlitch = `<span style="letter-spacing: -2px;">${randomChar()} ${randomChar()} ${randomChar()} ${randomChar()}</span>`;
 
         // Replace content with glitch text
         element.innerHTML = `${smallGlitch} ${moritzGlitch} ${gaussGlitch}`;
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (Math.abs(currentScroll - lastScrollTop) > 50) {
                     glitchText(
                         moritzElement,
-                        `<span class="studio-tag" style="letter-spacing: 0px;">Studio</span> <span style="letter-spacing: 2px;">Mritz Gauss</span>`
+                        `<span class="studio-tag" style="letter-spacing: initial;">Studio</span> <span style="letter-spacing: -2px;">Mritz Gauss</span>`
                     );
                     lastScrollTop = currentScroll;
                 }
