@@ -65,7 +65,6 @@ document.addEventListener("DOMContentLoaded", function () {
             lastScrollTop = currentScroll;
         }
     });
-});
 
     const images = document.querySelectorAll(".offering-item img");
     if (images.length === 0) {
