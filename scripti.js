@@ -8,6 +8,53 @@ function goBack() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+    const moritzElement = document.querySelector(".moritz");
+    if (!moritzElement) {
+        console.error("Element '.moritz' not found!");
+        return;
+    }
+
+    let isFlipping = false;
+
+    function randomChar() {
+        const symbols = "✪✹❦☭★❥✱♫♠♞♥";
+        return symbols[Math.floor(Math.random() * symbols.length)];
+    }
+
+    function glitchText(element, originalText, duration = 300) {
+        if (isFlipping) return;
+        isFlipping = true;
+
+        // Generate a string with exactly 10 random Unicode symbols
+        let scrambledText = Array.from({ length: 7 }, () => randomChar()).join("");
+
+        element.textContent = scrambledText; // Apply the 10-symbol glitch effect
+
+        setTimeout(() => {
+            element.textContent = originalText; // Restore original text after duration
+            isFlipping = false;
+        }, duration);
+    }
+
+    let lastScrollTop = 0;
+    let ticking = false;
+
+    window.addEventListener("scroll", function () {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                let currentScroll = window.scrollY;
+                if (Math.abs(currentScroll - lastScrollTop) > 50) {
+                    glitchText(moritzElement, "Studio Mritz Gauss");
+                    lastScrollTop = currentScroll;
+                }
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
     const textElement = document.querySelector(".text-me");
     let isFlipping = false;
 
@@ -244,7 +291,7 @@ window.addEventListener("touchend", handleSwipeEnd);
 updateCoverFlow();
 
 document.addEventListener("DOMContentLoaded", function () {
-    const links = document.querySelectorAll(".menu a");
+    const links = document.querySelectorAll(".nav a");
     const popups = document.querySelectorAll(".popup");
 
     links.forEach(link => {
@@ -264,7 +311,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Klicken außerhalb des Popups schließt es
     document.addEventListener("click", function (event) {
-        if (!event.target.closest(".popup") && !event.target.closest(".menu a")) {
+        if (!event.target.closest(".popup") && !event.target.closest(".nav a")) {
             popups.forEach(popup => popup.classList.remove("active"));
         }
     });
