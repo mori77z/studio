@@ -358,8 +358,8 @@ input:focus, select:focus {
     .popup {
         font-size: 20px;
         top: 180px;
-        width: 60%;
-        max-height: 40%;
+        width: 75%;
+        max-height: 60%;
         padding-left: 20px;
         padding-right: 20px;
     }
