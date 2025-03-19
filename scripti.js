@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
 document.addEventListener("DOMContentLoaded", function() {
     const radioPopup = document.getElementById("radio");
 
@@ -65,7 +66,15 @@ document.addEventListener("DOMContentLoaded", function() {
         event.preventDefault();
         radioPopup.style.display = "block";
     });
+
+    // Close popup when clicking outside
+    document.addEventListener("click", function(event) {
+        if (!radioPopup.contains(event.target) && event.target.getAttribute("href") !== "#radio") {
+            radioPopup.style.display = "none";
+        }
+    });
 });
+
 document.addEventListener("DOMContentLoaded", function () {
     const textElement = document.querySelector(".text-me");
     let isFlipping = false;
