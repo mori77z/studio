@@ -59,22 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    const radioPopup = document.getElementById("radio");
-
-    document.querySelector("a[href='#radio']").addEventListener("click", function(event) {
-        event.preventDefault();
-        radioPopup.style.display = "block";
-    });
-
-    // Close popup when clicking outside
-    document.addEventListener("click", function(event) {
-        if (!radioPopup.contains(event.target) && event.target.getAttribute("href") !== "#radio") {
-            radioPopup.style.display = "none";
-        }
-    });
-});
-
 document.addEventListener("DOMContentLoaded", function () {
     const textElement = document.querySelector(".text-me");
     let isFlipping = false;
@@ -311,32 +295,48 @@ window.addEventListener("touchend", handleSwipeEnd);
 
 updateCoverFlow();
 
-document.addEventListener("DOMContentLoaded", function() {
-    const popups = document.querySelectorAll(".popup");
+document.addEventListener("DOMContentLoaded", function () {
     const links = document.querySelectorAll(".nav a");
-
-    function closeAllPopups() {
-        popups.forEach(popup => popup.classList.remove("active"));
-    }
+    const popups = document.querySelectorAll(".popup");
 
     links.forEach(link => {
-        link.addEventListener("click", function(event) {
+        link.addEventListener("click", function (event) {
             event.preventDefault();
-            closeAllPopups();
 
-            const targetPopup = document.querySelector(this.getAttribute("href"));
-            if (targetPopup) {
-                targetPopup.classList.add("active");
+            // Vorherige aktive Popups schließen
+            popups.forEach(popup => popup.classList.remove("active"));
+
+            // Neues Popup öffnen
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+                target.classList.add("active");
             }
         });
     });
 
-    document.addEventListener("click", function(event) {
+    // Klicken außerhalb des Popups schließt es
+    document.addEventListener("click", function (event) {
         if (!event.target.closest(".popup") && !event.target.closest(".nav a")) {
-            closeAllPopups();
+            popups.forEach(popup => popup.classList.remove("active"));
         }
     });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const toggleButton = document.getElementById("toggleRadio");
+    const radioSection = document.getElementById("radioSection");
+
+    toggleButton.addEventListener("click", function(event) {
+        event.preventDefault();
+
+        if (radioSection.style.maxHeight === "0px" || !radioSection.style.maxHeight) {
+            radioSection.style.maxHeight = "400px"; // Höhe anpassen
+        } else {
+            radioSection.style.maxHeight = "0px";
+        }
+    });
+});
+
 
 /* WhatsApp-Button mit Datum & Uhrzeit
 const whatsappBtn = document.getElementById('whatsapp-btn');
