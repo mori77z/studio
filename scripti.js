@@ -295,58 +295,30 @@ window.addEventListener("touchend", handleSwipeEnd);
 
 updateCoverFlow();
 
-document.addEventListener("DOMContentLoaded", function () {
-    const links = document.querySelectorAll(".nav a");
+document.addEventListener("DOMContentLoaded", function() {
     const popups = document.querySelectorAll(".popup");
+    const links = document.querySelectorAll(".nav a");
+
+    function closeAllPopups() {
+        popups.forEach(popup => popup.classList.remove("active"));
+    }
 
     links.forEach(link => {
-        link.addEventListener("click", function (event) {
+        link.addEventListener("click", function(event) {
             event.preventDefault();
+            closeAllPopups();
 
-            // Vorherige aktive Popups schließen
-            popups.forEach(popup => popup.classList.remove("active"));
-
-            // Neues Popup öffnen
-            const target = document.querySelector(this.getAttribute("href"));
-            if (target) {
-                target.classList.add("active");
+            const targetPopup = document.querySelector(this.getAttribute("href"));
+            if (targetPopup) {
+                targetPopup.classList.add("active");
             }
         });
     });
 
-    // Klicken außerhalb des Popups schließt es
-    document.addEventListener("click", function (event) {
+    document.addEventListener("click", function(event) {
         if (!event.target.closest(".popup") && !event.target.closest(".nav a")) {
-            popups.forEach(popup => popup.classList.remove("active"));
+            closeAllPopups();
         }
-    });
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-    const radioPopup = document.getElementById("radio");
-    const spotifyFrame = document.createElement("iframe");
-
-    spotifyFrame.style.borderRadius = "12px";
-    spotifyFrame.width = "100%";
-    spotifyFrame.height = "352";
-    spotifyFrame.frameBorder = "0";
-    spotifyFrame.allowFullscreen = "";
-    spotifyFrame.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
-    spotifyFrame.loading = "lazy";
-    spotifyFrame.src = "https://open.spotify.com/embed/playlist/0GnYwlv9eLPrCvYt9C67aS";
-
-    function showRadioPopup() {
-        if (!radioPopup.contains(spotifyFrame)) {
-            radioPopup.appendChild(spotifyFrame);
-        }
-        setTimeout(() => {
-            radioPopup.style.display = "block"; // Verzögerung gibt dem DOM Zeit
-        }, 50);
-    }
-
-    document.querySelector("a[href='#radio']").addEventListener("click", function(event) {
-        event.preventDefault();
-        showRadioPopup();
     });
 });
 
