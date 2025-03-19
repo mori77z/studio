@@ -144,7 +144,9 @@ h4 {
 }
 
 .popup {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s;
     position: fixed;
     top: 120px;
     left: 50%;
@@ -169,7 +171,8 @@ h4 {
 }
 
 .popup.active {
-    display: block;
+    visibility: visible;
+    opacity: 1;
 }
 
 .popup a {
