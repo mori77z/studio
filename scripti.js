@@ -325,7 +325,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function() {
     const radioPopup = document.getElementById("radio");
     const spotifyFrame = document.createElement("iframe");
-    
+
     spotifyFrame.style.borderRadius = "12px";
     spotifyFrame.width = "100%";
     spotifyFrame.height = "352";
@@ -336,15 +336,24 @@ document.addEventListener("DOMContentLoaded", function() {
     spotifyFrame.src = "https://open.spotify.com/embed/playlist/0GnYwlv9eLPrCvYt9C67aS";
 
     function showRadioPopup() {
-        radioPopup.appendChild(spotifyFrame);
+        if (!radioPopup.contains(spotifyFrame)) {
+            radioPopup.appendChild(spotifyFrame);
+        }
+        radioPopup.classList.add("active");
     }
 
-    // Füge Event-Listener hinzu, um das Popup zu öffnen
+    function closeRadioPopup(event) {
+        if (!radioPopup.contains(event.target) && !event.target.closest("a[href='#radio']")) {
+            radioPopup.classList.remove("active");
+        }
+    }
+
     document.querySelector("a[href='#radio']").addEventListener("click", function(event) {
-        event.preventDefault(); 
+        event.preventDefault();
         showRadioPopup();
-        radioPopup.style.display = "block"; // Sicherstellen, dass es sichtbar ist
     });
+
+    document.addEventListener("click", closeRadioPopup);
 });
 
 /* WhatsApp-Button mit Datum & Uhrzeit
