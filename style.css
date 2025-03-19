@@ -53,6 +53,12 @@ nav a.active {
     padding-right: 4px;
 }
 
+#radioSection {
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+}
+
 .logo {
     display: flex;
     justify-content: space-between; 
