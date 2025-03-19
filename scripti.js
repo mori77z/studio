@@ -322,6 +322,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    const radioPopup = document.getElementById("radio");
+    const spotifyFrame = document.createElement("iframe");
+    
+    spotifyFrame.style.borderRadius = "12px";
+    spotifyFrame.width = "100%";
+    spotifyFrame.height = "352";
+    spotifyFrame.frameBorder = "0";
+    spotifyFrame.allowFullscreen = "";
+    spotifyFrame.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+    spotifyFrame.loading = "lazy";
+    spotifyFrame.src = "https://open.spotify.com/embed/playlist/0GnYwlv9eLPrCvYt9C67aS";
+
+    function showRadioPopup() {
+        radioPopup.appendChild(spotifyFrame);
+    }
+
+    // Füge Event-Listener hinzu, um das Popup zu öffnen
+    document.querySelector("a[href='#radio']").addEventListener("click", function(event) {
+        event.preventDefault(); 
+        showRadioPopup();
+        radioPopup.style.display = "block"; // Sicherstellen, dass es sichtbar ist
+    });
+});
 
 /* WhatsApp-Button mit Datum & Uhrzeit
 const whatsappBtn = document.getElementById('whatsapp-btn');
