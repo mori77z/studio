@@ -58,7 +58,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+document.addEventListener("DOMContentLoaded", function() {
+    const radioPopup = document.getElementById("radio");
 
+    document.querySelector("a[href='#radio']").addEventListener("click", function(event) {
+        event.preventDefault();
+        radioPopup.style.display = "block";
+    });
+});
 document.addEventListener("DOMContentLoaded", function () {
     const textElement = document.querySelector(".text-me");
     let isFlipping = false;
