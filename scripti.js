@@ -322,7 +322,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const radioPopup = document.getElementById("radio");
     const spotifyFrame = document.createElement("iframe");
 
@@ -335,25 +335,31 @@ document.addEventListener("DOMContentLoaded", function() {
     spotifyFrame.loading = "lazy";
     spotifyFrame.src = "https://open.spotify.com/embed/playlist/0GnYwlv9eLPrCvYt9C67aS";
 
-    function showRadioPopup() {
-        if (!radioPopup.contains(spotifyFrame)) {
-            radioPopup.appendChild(spotifyFrame);
+    let isOpen = false; // Verhindert mehrfaches Einfügen
+
+    function toggleRadioPopup() {
+        if (!isOpen) {
+            radioPopup.appendChild(spotifyFrame); // Einfügen des Players (nur einmal)
+            radioPopup.classList.add("active"); // Popup anzeigen
+            isOpen = true;
+        } else {
+            radioPopup.classList.remove("active"); // Popup ausblenden
+            isOpen = false;
         }
-        radioPopup.classList.add("active");
     }
 
-    function closeRadioPopup(event) {
-        if (!radioPopup.contains(event.target) && !event.target.closest("a[href='#radio']")) {
-            radioPopup.classList.remove("active");
-        }
-    }
-
-    document.querySelector("a[href='#radio']").addEventListener("click", function(event) {
+    document.querySelector("a[href='#radio']").addEventListener("click", function (event) {
         event.preventDefault();
-        showRadioPopup();
+        toggleRadioPopup();
     });
 
-    document.addEventListener("click", closeRadioPopup);
+    // Klicken außerhalb des Popups schließt es wieder
+    document.addEventListener("click", function (event) {
+        if (isOpen && !radioPopup.contains(event.target) && !event.target.closest("a[href='#radio']")) {
+            radioPopup.classList.remove("active");
+            isOpen = false;
+        }
+    });
 });
 
 /* WhatsApp-Button mit Datum & Uhrzeit
