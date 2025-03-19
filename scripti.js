@@ -322,7 +322,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     const radioPopup = document.getElementById("radio");
     const spotifyFrame = document.createElement("iframe");
 
@@ -335,24 +335,18 @@ document.addEventListener("DOMContentLoaded", function () {
     spotifyFrame.loading = "lazy";
     spotifyFrame.src = "https://open.spotify.com/embed/playlist/0GnYwlv9eLPrCvYt9C67aS";
 
-    let isOpen = false;
-
-    function toggleRadioPopup() {
-        if (!isOpen) {
-            if (!radioPopup.contains(spotifyFrame)) {
-                radioPopup.appendChild(spotifyFrame);
-            }
-            radioPopup.classList.add("active"); // Öffnen
-            isOpen = true;
-        } else {
-            radioPopup.classList.remove("active"); // Schließen
-            isOpen = false;
+    function showRadioPopup() {
+        if (!radioPopup.contains(spotifyFrame)) {
+            radioPopup.appendChild(spotifyFrame);
         }
+        setTimeout(() => {
+            radioPopup.style.display = "block"; // Verzögerung gibt dem DOM Zeit
+        }, 50);
     }
 
-    document.querySelector("a[href='#radio']").addEventListener("click", function (event) {
+    document.querySelector("a[href='#radio']").addEventListener("click", function(event) {
         event.preventDefault();
-        toggleRadioPopup();
+        showRadioPopup();
     });
 });
 
