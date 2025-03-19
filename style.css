@@ -172,6 +172,16 @@ h4 {
     display: block;
 }
 
+.popup.a {
+    text-decoration: underline;
+    color: black;
+     text-shadow:  
+      -1px -1px 1px rgba(255, 255, 255, 0.8),  
+       1px  1px 1px rgba(255, 255, 255, 0.8),  
+      -1px  1px 1px rgba(255, 255, 255, 0.8),  
+       1px -1px 1px rgba(255, 255, 255, 0.8);
+}
+
 .pricing-container {
     display: flex;
     gap: 10px;
@@ -401,6 +411,15 @@ input:focus, select:focus {
 
     .popup {
         background: rgba(255, 255, 255, 0.2);
+        text-shadow:  
+          -1px -1px 1px rgba(0, 0, 0, 0.8),  
+           1px  1px 1px rgba(0, 0, 0, 0.8),  
+          -1px  1px 1px rgba(0, 0, 0, 0.8),  
+           1px -1px 1px rgba(0, 0, 0, 0.8);
+    }
+
+    .popup.a {
+    color: white;
         text-shadow:  
           -1px -1px 1px rgba(0, 0, 0, 0.8),  
            1px  1px 1px rgba(0, 0, 0, 0.8),  
