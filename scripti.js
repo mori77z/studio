@@ -303,13 +303,19 @@ document.addEventListener("DOMContentLoaded", function () {
         link.addEventListener("click", function (event) {
             event.preventDefault();
 
-            // Vorherige aktive Popups schließen
-            popups.forEach(popup => popup.classList.remove("active"));
-
-            // Neues Popup öffnen
             const target = document.querySelector(this.getAttribute("href"));
+            
             if (target) {
-                target.classList.add("active");
+                // Falls das Popup bereits aktiv ist, schließe es
+                if (target.classList.contains("active")) {
+                    target.classList.remove("active");
+                } else {
+                    // Vorherige aktive Popups schließen
+                    popups.forEach(popup => popup.classList.remove("active"));
+
+                    // Neues Popup öffnen
+                    target.classList.add("active");
+                }
             }
         });
     });
