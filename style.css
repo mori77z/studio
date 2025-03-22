@@ -252,12 +252,12 @@ h4 {
 
 .imprint-link {
     text-align: center;
+    margin-bottom: 100px;
 }
 
 .imprint-link a {
     font-size: 20px;
     color: black;
-    margin-bottom: 40px;
 }
 
 .contact-card {
