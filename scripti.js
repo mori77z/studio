@@ -435,7 +435,7 @@ function translateToGerman() {
 
         document.querySelector(".offerings-header h4").textContent = "Kontakt";
         document.querySelector(".contact-card p").innerHTML = "Designs: Fertig in 2 - 4 Wochen<br>Entwicklung: Launch in 2 - 8 Wochen";
-        document.querySelector(".time-selector label").textContent = "Schicken mir einen Termin für einen ersten Call (Mo-Fr / 10:00-17:00)";
+        document.querySelector(".time-selector label").textContent = "Wähle einen Termin für einen ersten Call (Mo-Fr / 10:00-17:00)";
         document.querySelector("#whatsapp-btn").textContent = "E-Mail senden";
 
 }
