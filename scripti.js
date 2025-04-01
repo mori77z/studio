@@ -348,91 +348,62 @@ document.addEventListener("DOMContentLoaded", function () {
     let isGerman = lang.startsWith("de");
 
     if (isGerman) {
-        translateToGerman();
+        document.querySelector(".go-back").innerHTML = "(Zurück)";
+        document.querySelector(".nav a[href='#details']").textContent = "Details";
+        document.querySelector(".nav a[href='#offers']").textContent = "Angebote";
+        document.querySelector(".nav a[href='#experience']").textContent = "Erfahrung";
+        document.querySelector(".nav a[href='#clients']").textContent = "Kunden";
+        document.querySelector(".nav a[href='#pricing']").textContent = "Preise";
+        document.querySelector("#toggleRadio").textContent = "Radio";
+
+        document.querySelector("#details p").innerHTML = 
+            "Hier ist der Text mit deiner Ergänzung:
+
+„Ich konzipiere und gestalte Websites, die durchdacht, visuell prägnant und funktional sind. Mein Fokus liegt auf alleinstehenden digitalen Identitäten – für anspruchsvolle Projekte, die mehr als Standardlösungen brauchen. Als  Industriedesigner (B.A.) bringe ich dabei mein Verständnis für Gestaltung und Funktionalität mit ein. Wenn das nach deinem Vorhaben klingt, mach einen Termin unten oder direkt an: <a href='mailto:email@moritzgauss.com'>email@moritzgauss.com</a>.";
+
+        document.querySelector("#offers").innerHTML = `
+            <p>1. Visuelles Design & Branding<br>Kohärente visuelle Elemente, die zur Markenidentität passen, einschließlich Farbgestaltung, Typografie und Bildsprache.</p>
+            <p>2. Individuelle Grafiken & Icons<br>Maßgeschneiderte Grafiken und Icons, die das Website-Design unterstützen und die Nutzererfahrung verbessern.</p>
+            <p>3. Interaktive Elemente<br>Animationen, Hover-Effekte und interaktive Features zur Gestaltung dynamischer und ansprechender Webseiten.</p>
+            <p>4. Inhaltsstruktur & Layout<br>Strukturierte und ästhetische Anordnung von Inhalten für bessere Lesbarkeit und Nutzerführung.</p>`;
+
+        document.querySelector("#experience").innerHTML = `
+            <p>Akademische Ausbildung<br>Industriedesign-Studium als Grundlage für methodisches Webdesign.</p>
+            <p>Freelance-Erfahrung<br>Jahrelange Zusammenarbeit mit Kunden für maßgeschneiderte digitale Erlebnisse.</p>
+            <p>Interdisziplinäre Fähigkeiten<br>Verbindung aus digitaler Kunst, Branding und UI/UX-Design.</p>`;
+
+        document.querySelector("#clients p:first-child").textContent = "Ausgewählte Kunden";
+
+        document.querySelector("#pricing p").textContent = "Jedes Projekt ist einzigartig, und ich biete flexible Preisoptionen, die sich an Ihre individuellen Anforderungen anpassen.";
+
+        document.querySelector(".package:nth-child(1) p").innerHTML = "Basis-Paket<br>800 EUR";
+        document.querySelector(".package:nth-child(1) ul").innerHTML = `
+            <li>Einfache Website mit bis zu 5 Seiten</li>
+            <li>Grundlegendes SEO</li>
+            <li>Responsives Design für Mobil und Desktop</li>
+            <li>Integration von Social Media & Kontaktformular</li>`;
+
+        document.querySelector(".package:nth-child(2) p").innerHTML = "Erweitertes Paket<br>1600 EUR";
+        document.querySelector(".package:nth-child(2) ul").innerHTML = `
+            <li>Individuelles Website-Design mit bis zu 10 Seiten</li>
+            <li>Erweiterte Design-Elemente & Animationen</li>
+            <li>Optimierung für SEO & Performance</li>
+            <li>Integration von E-Commerce oder Blog-Funktion</li>`;
+
+        document.querySelector(".package:nth-child(3) p").innerHTML = "Premium-Paket<br>3000 EUR";
+        document.querySelector(".package:nth-child(3) ul").innerHTML = `
+            <li>Vollständig maßgeschneiderte Webanwendung oder Website mit unbegrenzten Seiten</li>
+            <li>Komplexe Features wie Benutzeranmeldung, Zahlungssysteme oder API-Integrationen</li>
+            <li>Umfassende SEO- & Analytics-Einrichtung</li>
+            <li>6 Monate Support & Wartung</li>`;
+
+        // Übersetzung für den "Contact"-Bereich
+        document.querySelector(".offerings-header h4").textContent = "Kontakt";
+        document.querySelector(".contact-card p").innerHTML = "Designs: Fertig in 2 - 4 Wochen<br>Entwicklung: Launch in 2 - 8 Wochen";
+        document.querySelector(".time-selector label").textContent = "Schicken Sie mir einen Termin für ein erstes Gespräch (Mo-Fr / 10:00-17:00)";
+        document.querySelector("#whatsapp-btn").textContent = "E-Mail senden";
     }
 });
-
-function translateToGerman() {
-    // Navigation
-    document.querySelector("a[href='#details']").textContent = "Details";
-    document.querySelector("a[href='#offers']").textContent = "Angebote";
-    document.querySelector("a[href='#experience']").textContent = "Erfahrung";
-    document.querySelector("a[href='#clients']").textContent = "Kunden";
-    document.querySelector("a[href='#pricing']").textContent = "Preise";
-    document.querySelector("#toggleRadio").textContent = "Radio";
-
-    // "Go Back"-Link
-    const goBackElement = document.querySelector(".go-back");
-    if (goBackElement) {
-        goBackElement.textContent = "(Zurück)";
-    }
-
-    // Popups
-    document.querySelector("#details p").innerHTML = "Ich erkunde Subkultur-Trends und die Ästhetik des frühen Internets, um einzigartige Websites zu gestalten, die eindrucksvolle visuelle Elemente mit funktionalem Design vereinen. Meine Arbeit verbindet künstlerischen Ausdruck mit Effizienz und hinterfragt digitale Konventionen. Kontaktieren Sie mich über die E-Mail-Funktion unten oder direkt unter <a href='mailto:email@moritzgauss.com'>email@moritzgauss.com</a>.";
-
-    document.querySelector("#offers").innerHTML = `
-        <p>1. Visuelles Design und Branding<br>Gestaltung kohärenter visueller Elemente, die mit der Markenidentität übereinstimmen, einschließlich Farbschemata, Typografie und Bildsprache.</p>
-        <p>2. Individuelle Grafiken und Icons<br>Erstellung einzigartiger Grafiken und Icons, die das Website-Design bereichern und die Nutzererfahrung verbessern.</p>
-        <p>3. Interaktive Elemente<br>Einbindung interaktiver Features wie Animationen, Hover-Effekte und klickbare Elemente für eine dynamische Benutzererfahrung.</p>
-        <p>4. Strukturierte Inhaltsdarstellung<br>Übersichtliche, logische und ästhetische Anordnung von Inhalten für eine bessere Lesbarkeit.</p>
-    `;
-
-    document.querySelector("#experience").innerHTML = `
-        <p>Akademische Ausbildung<br>Industriedesign-Studium als Grundlage für methodisches Webdesign.</p>
-        <p>Freiberufliche Erfahrung<br>Jahre der Zusammenarbeit mit Kunden zur Entwicklung maßgeschneiderter digitaler Erlebnisse.</p>
-        <p>Interdisziplinäre Fähigkeiten<br>Kombination aus digitaler Kunst, Branding und UI/UX-Design.</p>
-    `;
-
-    document.querySelector("#clients").innerHTML = `
-        <p>Liste ausgewählter Kunden</p>
-        <p><a href="https://1902site.framer.website" target="_blank"><i>(In Arbeit)</i> seit 19.02.20 Gegen Rassismus</a></p>
-        <p><a href="https://instagram.com/hfg.radio" target="_blank"><i>(In Arbeit)</i> HFG Offenbach Radio</a></p>
-        <p><a href="https://oscardiazvisual.com">Oscar Diaz (Barcelona, Spanien)<a/></p>
-        <p><a href="https://www.nookcph.com" target="_blank">Nook Agency (Kopenhagen, Dänemark)</a></p>
-        <p><a href="https://germanistan.eu" target="_blank">Germanistan Musiklabel (München, Deutschland)</a></p>
-        <p><a href="https://www.13senses-agency.ch" target="_blank">13 Senses Agency (Luzern, Schweiz)</a></p>
-        <p><a href="https://www.byebambi.com" target="_blank">Bye Bambi Modemarke (Windsor, Australien)</a></p>
-    `;
-
-    document.querySelector("#pricing").innerHTML = `
-        <p>Jedes Projekt ist einzigartig, und ich biete flexible Preisoptionen, die auf Ihre spezifischen Anforderungen zugeschnitten sind.</p>
-
-        <div class="pricing-container">
-            <div class="package">
-                <img src="https://raw.githubusercontent.com/mori77z/library/refs/heads/main/Zeichenf1.png" alt="Basis-Paket" class="pricing-image">
-                <p>Basis-Paket<br>800 EUR</p>
-                <ul>
-                    <li>Einfache Website mit bis zu 5 Seiten</li>
-                    <li>Grundlegende SEO-Optimierung</li>
-                    <li>Responsives Design für Mobil- und Desktop</li>
-                    <li>Integration von Social Media und Kontaktformular</li>
-                </ul>
-            </div>
-
-            <div class="package">
-                <img src="https://raw.githubusercontent.com/mori77z/library/refs/heads/main/Bild45465.jpg" alt="Erweitertes Paket" class="pricing-image">
-                <p>Erweitertes Paket<br>1600 EUR</p>
-                <ul>
-                    <li>Individuelle Website mit bis zu 10 Seiten</li>
-                    <li>Erweiterte Designelemente und Animationen</li>
-                    <li>Verbesserte SEO und Performance-Optimierung</li>
-                    <li>Integration von E-Commerce oder Blog-Funktionalität</li>
-                </ul>
-            </div>
-
-            <div class="package">
-                <img src="https://raw.githubusercontent.com/mori77z/library/refs/heads/main/Mockup2-p-3200.jpg" alt="Premium-Paket" class="pricing-image">
-                <p>Premium-Paket<br>3000 EUR</p>
-                <ul>
-                    <li>Vollständig individuelle Webanwendung oder Website mit unbegrenzten Seiten</li>
-                    <li>Komplexe Funktionen wie Benutzeranmeldung, Zahlungsabwicklung oder API-Integrationen</li>
-                    <li>Umfassende SEO- und Analyse-Setups</li>
-                    <li>6 Monate laufender Support und Wartung</li>
-                </ul>
-            </div>
-        </div>
-    `;
-}
 
 /* WhatsApp-Button mit Datum & Uhrzeit
 const whatsappBtn = document.getElementById('whatsapp-btn');
