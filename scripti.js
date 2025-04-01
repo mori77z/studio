@@ -368,7 +368,7 @@ function translateToGerman() {
     }
 
     // Popups
-    document.querySelector("#details p").innerHTML = "Ich erkunde Subkultur-Trends und die Ästhetik des frühen Internets, um einzigartige Websites zu gestalten, die eindrucksvolle visuelle Elemente mit funktionalem Design vereinen. Meine Arbeit verbindet künstlerischen Ausdruck mit Effizienz und hinterfragt digitale Konventionen. Kontaktieren Sie mich über die E-Mail-Funktion unten oder direkt unter <a href='mailto:email@moritzgauss.com'>email@moritzgauss.com</a>.";
+    document.querySelector("#details p").innerHTML = "Ich konzipiere und gestalte Websites, die durchdacht, visuell prägnant und funktional sind. Mein Fokus liegt auf alleinstehenden digitalen Identitäten – für anspruchsvolle Projekte, die mehr als Standardlösungen brauchen. Als Industriedesigner (B.A.) bringe ich dabei mein Verständnis für Gestaltung und Funktionalität mit ein. Wenn das nach deinem Vorhaben klingt, mach einen Termin unten oder direkt an: <a href='mailto:email@moritzgauss.com'>email@moritzgauss.com</a>.";
 
     document.querySelector("#offers").innerHTML = `
         <p>1. Visuelles Design und Branding<br>Gestaltung kohärenter visueller Elemente, die mit der Markenidentität übereinstimmen, einschließlich Farbschemata, Typografie und Bildsprache.</p>
