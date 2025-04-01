@@ -193,7 +193,7 @@ h4 {
 
 .pricing-container {
     display: flex;
-    gap: 10px;
+    gap: 6px;
     justify-content: space-between;
 }
 
@@ -212,7 +212,7 @@ h4 {
 }
 
 .pricing-image {
-    max-width: 100px;
+    max-width: 75px;
     aspect-ratio: 1 / 1;
     opacity: 0.6;
     border-radius: 8px;
@@ -364,6 +364,10 @@ input:focus, select:focus {
     .offerings-grid {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 20px;
+    }
+    
+    .pricing-container {
+    gap: 10px;
     }
     
     .pricing-image {
