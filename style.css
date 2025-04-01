@@ -198,6 +198,7 @@ h4 {
 }
 
 .package {
+    max-width: 80px;
     flex: 1;
     text-align: left;
 }
@@ -364,6 +365,10 @@ input:focus, select:focus {
     .offerings-grid {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 20px;
+    }
+    
+    .package {
+    width: 100%;
     }
     
     .pricing-container {
