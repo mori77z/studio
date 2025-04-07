@@ -317,7 +317,7 @@ input:focus, select:focus {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 300px;
+    width: 140px;
     margin-top: 30px;
     background: #f8f8f8;
     color: black;
@@ -412,6 +412,9 @@ input:focus, select:focus {
     .text-me {
         font-size: 20px;
     }
+    .whatsapp-button {
+    width: 300px;
+}
 }
 
 @media (prefers-color-scheme: dark) {
