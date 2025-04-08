@@ -357,7 +357,7 @@ function translateToGerman() {
     document.querySelector("a[href='#details']").textContent = "Details";
     document.querySelector("a[href='#offers']").textContent = "Angebote";
     document.querySelector("a[href='#experience']").textContent = "Erfahrung";
-    document.querySelector("a[href='#clients']").textContent = "Kunden";
+    document.querySelector("a[href='#clients']").textContent = "Arbeiten";
     document.querySelector("a[href='#pricing']").textContent = "Preise";
     document.querySelector("#toggleRadio").textContent = "Radio";
 
@@ -368,23 +368,22 @@ function translateToGerman() {
     }
 
     // Popups
-    document.querySelector("#details p").innerHTML = "Ich konzipiere und gestalte Websites, die durchdacht, visuell prägnant und funktional sind. Mein Fokus liegt auf alleinstehenden digitalen Identitäten – für anspruchsvolle Projekte, die mehr als Standardlösungen brauchen. Als Industriedesigner (B.A.) bringe ich dabei mein Verständnis für Gestaltung und Funktionalität mit ein. Wenn das nach deinem Vorhaben klingt, mach einen Termin unten oder direkt an: <a href='mailto:email@moritzgauss.com'>email@moritzgauss.com</a>.";
+    document.querySelector("#details p").innerHTML = "Ich konzipiere und gestalte Websites, die durchdacht, visuell prägnant und funktional sind. Mein Fokus liegt auf alleinstehenden digitalen Identitäten – für anspruchsvolle Projekte, die mehr als Standardlösungen brauchen. Als Industriedesigner (B.A.) bringe ich dabei mein Verständnis für Gestaltung und Funktionalität mit ein. Mach gerne einen Termin unten oder schick mir eine Anfrage an: <a href='mailto:email@moritzgauss.com'>email@moritzgauss.com</a>.";
 
     document.querySelector("#offers").innerHTML = `
-        <p>1. Visuelles Design und Branding<br>Gestaltung kohärenter visueller Elemente, die mit der Markenidentität übereinstimmen, einschließlich Farbschemata, Typografie und Bildsprache.</p>
-        <p>2. Individuelle Grafiken und Icons<br>Erstellung einzigartiger Grafiken und Icons, die das Website-Design bereichern und die Nutzererfahrung verbessern.</p>
-        <p>3. Interaktive Elemente<br>Einbindung interaktiver Features wie Animationen, Hover-Effekte und klickbare Elemente für eine dynamische Benutzererfahrung.</p>
-        <p>4. Strukturierte Inhaltsdarstellung<br>Übersichtliche, logische und ästhetische Anordnung von Inhalten für eine bessere Lesbarkeit.</p>
+        <p>1. Visuelles Design und Branding:<br>Gestaltung kohärenter visueller Elemente, die mit der Markenidentität übereinstimmen, einschließlich Farbschemata, Typografie und Bildsprache.</p>
+        <p>2. Individuelle Grafiken und Icons:<br>Erstellung einzigartiger Grafiken und Icons, die das Website-Design bereichern und die Nutzererfahrung verbessern.</p>
+        <p>3. Interaktive Elemente:<br>Einbindung interaktiver Features wie Animationen, Hover-Effekte und klickbare Elemente für eine dynamische Benutzererfahrung.</p>
+        <p>4. Strukturierte Inhaltsdarstellung:<br>Übersichtliche, logische und ästhetische Anordnung von Inhalten für eine bessere Lesbarkeit.</p>
     `;
 
     document.querySelector("#experience").innerHTML = `
         <p>Akademische Ausbildung<br>Industriedesign-Studium als Grundlage für methodisches Webdesign.</p>
-        <p>Freiberufliche Erfahrung<br>Jahre der Zusammenarbeit mit Kunden zur Entwicklung maßgeschneiderter digitaler Erlebnisse.</p>
-        <p>Interdisziplinäre Fähigkeiten<br>Kombination aus digitaler Kunst, Branding und UI/UX-Design.</p>
+        <p>Freiberufliche Erfahrung<br>Zusammenarbeit mit Kunden in der Entwicklung von Websites.</p>
+        <p>Interdisziplinäre Fähigkeiten<br>Kombination aus Creative Coding, Branding und UI/UX-Design.</p>
     `;
 
     document.querySelector("#clients").innerHTML = `
-        <p>Liste ausgewählter Kunden</p>
         <p><a href="https://1902site.framer.website" target="_blank"><i>(In Arbeit)</i> seit 19.02.20 Gegen Rassismus</a></p>
         <p><a href="https://instagram.com/hfg.radio" target="_blank"><i>(In Arbeit)</i> HFG Offenbach Radio</a></p>
         <p><a href="https://oscardiazvisual.com">Oscar Diaz (Barcelona, Spanien)<a/></p>
