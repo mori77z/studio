@@ -378,9 +378,9 @@ function translateToGerman() {
     `;
 
     document.querySelector("#experience").innerHTML = `
-        <p>Akademische Ausbildung<br>Industriedesign-Studium als Grundlage für methodisches Webdesign.</p>
-        <p>Freiberufliche Erfahrung<br>Zusammenarbeit mit Kunden in der Entwicklung von Websites.</p>
-        <p>Interdisziplinäre Fähigkeiten<br>Kombination aus Creative Coding, Branding und UI/UX-Design.</p>
+        <p>Akademische Ausbildung:<br>Industriedesign-Studium als Grundlage für methodisches Webdesign.</p>
+        <p>Freiberufliche Erfahrung:<br>Zusammenarbeit mit Kunden in der Entwicklung von Websites.</p>
+        <p>Interdisziplinäre Fähigkeiten:<br>Kombination aus Creative Coding, Branding und UI/UX-Design.</p>
     `;
 
     document.querySelector("#clients").innerHTML = `
