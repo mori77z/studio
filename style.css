@@ -1,27 +1,88 @@
 body {
-    background-color: #fff,#fc4022;
+    width: 100%;
+    background: white;
     display: flex;
     flex-direction: column;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Moritz Sans', sans-serif;
     margin: 0;
     padding-bottom: 40px;
-    overflow-x: hidden;
-}
+  }
+
+  @font-face {
+    font-family: 'Moritz Sans';
+    src: url('https://moritzgauss.com/assets/moritzsans-condensed-webfont.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Moritz Sans Neue Bold';
+    src: url('https://moritzgauss.com/assets/moritzsans-neue-condensed-bold.woff') format('woff');
+  }
 
 .header-container {
     display: flex;
-    position: sticky;
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px; 
     padding: 10px;
+    gap: 10px; 
     overflow: visible;
+    position: sticky;
     top: 0;
-    background-color: rgba(255, 255, 255, 0.1); 
+    background-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     z-index: 10;
 }
+
+.logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 10px;
+    width: 100%;
+}
+
+.moritz {
+    font-size: 30px;
+    display: inline-block;
+}
+
+.logo a {
+    font-family: 'Moritz Sans Neue Bold', sans-serif;
+    font-size: 30px;
+    font-weight: normal;
+    line-height: 1;
+    color: black;
+    letter-spacing: -1.2px;
+    white-space: nowrap;
+    box-sizing: border-box; 
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.logo a:hover {
+    font-family: Times, serif;
+    font-style: italic;
+    letter-spacing: 0px;
+    padding-right: 4px;
+}
+
+.go-back {
+    margin: 0px;
+}
+
+.go-back a {
+    text-decoration: none;
+}
+
+.studio-tag {
+    font-size: 12px;
+    letter-spacing: initial;
+    }
+    
+.glitch-effect {
+    letter-spacing: -2px;
+    }
+    
 
 nav {
     display: flex;
@@ -58,50 +119,6 @@ nav a.active {
     overflow: hidden;
     transition: max-height 0.4s ease-in-out;
 }
-
-.logo {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    width: 100%;
-    padding-top: 10px;
-}
-
-.logo a {
-    font-size: 30px;
-    font-weight: normal;
-    line-height: 1;
-    color: black;
-    letter-spacing: -2px;
-    white-space: nowrap;
-    box-sizing: border-box; 
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.logo a:hover {
-    font-family: Times, serif;
-    font-style: italic;
-    letter-spacing: 0px;
-    padding-right: 4px;
-}
-
-.go-back {
-    margin: 0px;
-}
-
-.go-back a {
-    text-decoration: none;
-}
-
-.studio-tag {
-    font-size: 12px;
-    letter-spacing: initial;
-    }
-    
-.glitch-effect {
-    letter-spacing: -2px;
-    }
 
 .offerings {
     display: flex;
