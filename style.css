@@ -9,7 +9,7 @@ body {
     padding-bottom: 40px;
   }
 
-  @font-face {
+  /*@font-face {
     font-family: 'Moritz Sans';
     src: url('https://moritzgauss.com/assets/moritzsans-condensed-webfont.woff') format('woff');
   }
@@ -17,7 +17,7 @@ body {
   @font-face {
     font-family: 'Moritz Sans Neue Bold';
     src: url('https://moritzgauss.com/assets/moritzsans-neue-condensed-bold.woff') format('woff');
-  }
+  } */
 
 .header-container {
     display: flex;
