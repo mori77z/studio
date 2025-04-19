@@ -343,7 +343,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
+/*document.addEventListener("DOMContentLoaded", function () {
     let lang = navigator.language || navigator.userLanguage;
     let isGerman = lang.startsWith("de");
 
@@ -437,7 +437,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector(".time-selector label").textContent = "Wähle einen Termin für einen ersten Call (Mo-Fr / 10:00-17:00)";
         document.querySelector("#whatsapp-btn").textContent = "E-Mail senden";
 
-}
+}*/
 
 /* WhatsApp-Button mit Datum & Uhrzeit
 const whatsappBtn = document.getElementById('whatsapp-btn');
