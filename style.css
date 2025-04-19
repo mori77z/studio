@@ -3,7 +3,8 @@ body {
     background: white;
     display: flex;
     flex-direction: column;
-    font-family: 'Moritz Sans', sans-serif;
+    /*font-family: 'Moritz Sans', sans-serif;*/
+    font-family: Helvetica,  Arial, sans-serif;
     margin: 0;
     padding-bottom: 40px;
   }
@@ -47,12 +48,13 @@ body {
 }
 
 .logo a {
-    font-family: 'Moritz Sans Neue Bold', sans-serif;
+    /*font-family: 'Moritz Sans Neue Bold', sans-serif;*/
+    font-family: Helvetica,  Arial, sans-serif;
     font-size: 34px;
     font-weight: normal;
     line-height: 1;
     color: black;
-    letter-spacing: -1.2px;
+    letter-spacing: -2px;
     white-space: nowrap;
     box-sizing: border-box; 
     text-decoration: none;
