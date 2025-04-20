@@ -361,10 +361,10 @@ input:focus, select:focus {
         display: none;
     }
     .logo a {
-        font-size: 64px;
-        letter-spacing: -4px;
+        font-size: 48px;
+        letter-spacing: -5px;
     }
-    
+
     .studio-tag {
     font-size: 14px;
     }
