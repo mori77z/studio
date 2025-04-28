@@ -42,6 +42,19 @@ body {
     width: 100%;
 }
 
+.logo-image img {
+    height: 34px;
+    width: auto;
+}
+
+    .logo-light {
+    display: block;
+  }
+
+.logo-dark {
+  display: none;
+}
+
 .moritz {
     display: inline-block;
 }
@@ -451,6 +464,14 @@ input:focus, select:focus {
     .logo a {
         color: white;
     }
+    
+        .logo-light {
+    display: none;
+  }
+
+.logo-dark {
+  display: block;
+}
     nav a {
         color: white;
     }
