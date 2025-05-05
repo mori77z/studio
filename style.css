@@ -366,6 +366,11 @@ input:focus, select:focus {
 }
 
   .opener-text {
+    font-size: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
     padding-left: 10px;
     padding-right: 10px;
   }
@@ -456,6 +461,7 @@ input:focus, select:focus {
     .opener-text {
       padding-left: 20px;
       padding-right: 20px;
+      font-size: 34px;
     }
 }
 
