@@ -365,6 +365,12 @@ input:focus, select:focus {
     display: none;
 }
 
+  .opener-text {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
 @media (min-width: 600px) {
     .header-container {
         padding: 20px;
@@ -446,6 +452,11 @@ input:focus, select:focus {
     .whatsapp-button {
     width: 320px;
 }
+
+    .opener-text {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
