@@ -378,7 +378,6 @@ input:focus, select:focus {
 .swag-mask-container {
   display: block;
   width: 100%;
-  margin: 20px 0;
 }
 
 .swag-mask-container svg {
