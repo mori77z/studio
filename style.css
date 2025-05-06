@@ -149,7 +149,7 @@ nav a.active {
 
 h4 {
     font-size: 24px;
-    font-weight: 200;
+    font-weight: 600;
     letter-spacing: -1px;
     margin: 0px;
 }
@@ -368,6 +368,7 @@ input:focus, select:focus {
 .opener-text {
     font-size: 20px;
     max-width: 600px;
+    font-weight: 200;
     margin: 0 auto;
     display: block;
     padding-left: 10px;
