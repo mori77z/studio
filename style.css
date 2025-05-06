@@ -389,9 +389,10 @@ display: none;
 .video-mask-wrapper video,
 #swag-video {
   width: 100%;
-  height: 100%;
+  height: 5.5vw; /* Scales with screen size like big headline text */
   object-fit: cover;
   display: block;
+
   -webkit-mask-image: url(#text-mask-svg);
   mask-image: url(#text-mask-svg);
   -webkit-mask-repeat: no-repeat;
@@ -403,15 +404,14 @@ display: none;
 }
 
 .video-text-wrapper {
-  display: inline-block;
-  position: relative;
+  display: block;
   width: 100%;
-  height: 200px; /* Adjust height as needed */
-  vertical-align: middle;
-  overflow: hidden;
+  height: auto;
+  margin: 0.5em 0;
   line-height: 1;
-  margin: 0.5rem 0;
+  text-align: center;
 }
+
 
 .masked-text {
   position: relative;
