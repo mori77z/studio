@@ -382,8 +382,8 @@ input:focus, select:focus {
 
 .swag-mask-container svg {
   display: block;
-  width: 100%;
-  height: 160px;
+  width: auto;
+  overflow: visible;
 }
 
 @media (min-width: 600px) {
@@ -476,8 +476,6 @@ input:focus, select:focus {
 
 .swag-mask-container svg {
   height: 200px;
-  width: auto;
-  overflow: visible;
 }
 .swag-text {
   font-size: 200px;
