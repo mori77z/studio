@@ -366,71 +366,29 @@ input:focus, select:focus {
 }
 
 .opener-text {
-  font-size: 20px;
-  max-width: 600px;
-  margin: 0 auto;
-  display: block;
-  padding-left: 10px;
-  padding-right: 10px;
-  text-align: justify;
-}
+    font-size: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    display: block;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: justify;
+  }
 
-.video-mask-wrapper {
-  position: relative;
-  width: 100%;
-  height: 200px; /* Desired height */
-  overflow: hidden;
-}
-
-text-mask {
-display: none;
-}
-
-.video-mask-wrapper video,
-#swag-video {
-  width: 100%;
-  height: 5.5vw; /* Scales with screen size like big headline text */
-  object-fit: cover;
-  display: block;
-
-  -webkit-mask-image: url(#text-mask-svg);
-  mask-image: url(#text-mask-svg);
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.video-text-wrapper {
+.swag-mask-container {
   display: block;
   width: 100%;
-  height: auto;
-  margin: 0.5em 0;
-  line-height: 1;
-  text-align: center;
+  margin: 20px 0;
 }
 
-
-.masked-text {
-  position: relative;
+.swag-mask-container svg {
   display: block;
-  font-size: 10vw; /* Responsive size */
-  font-family: 'Impact', 'Arial Black', sans-serif;
-  font-weight: 900;
-  letter-spacing: -3px;
-  color: transparent;
-  text-align: center;
-  background: inherit;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  z-index: 1;
+  width: 100%;
+  height: 160px;
 }
 
 @media (min-width: 600px) {
-    .header-container {
+  .header-container {
         padding: 20px;
     }
     .coverflow-container {
@@ -516,6 +474,31 @@ display: none;
       padding-right: 20px;
       font-size: 34px;
     }
+
+  .video-text-wrapper {
+    height: 300px;
+  }
+  
+  #swag-video {
+    height: 300px;
+  }
+
+  .swag-text-container {
+    width: 180px;
+    height: 60px;
+  }
+  
+  .swag-text-mask {
+    font-size: 54px;
+  }
+
+  .swag-mask-container svg {
+    height: 300px;
+  }
+  
+  .swag-mask-container svg text {
+    font-size: 240px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
