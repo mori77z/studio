@@ -614,4 +614,20 @@ input:focus, select:focus {
     will-change: transform, opacity;
     transform-origin: center;
     font-size: 1em;
-    font-weight: 30
+    font-weight: 300;
+    text-align: center;
+}
+
+/* Album covers */
+.coverflow-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Hidden covers (far left & right) */
+.coverflow-item.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+}
