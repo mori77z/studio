@@ -376,9 +376,8 @@ input:focus, select:focus {
   }
 
 .swag-mask-container {
-  display: block;
-  width: 100%;
-  overflow: visible;
+  display: inline-block;
+  vertical-align: left;
 }
 
 .swag-mask-container svg {
