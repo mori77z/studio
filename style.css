@@ -369,26 +369,31 @@ input:focus, select:focus {
   font-size: 20px;
   max-width: 600px;
   margin: 0 auto;
-  padding: 0 10px;
+  display: block;
+  padding-left: 10px;
+  padding-right: 10px;
   text-align: justify;
 }
 
-.inline-video-mask {
-  display: inline-block;
-  width: 6ch; /* Adjust based on text length and font size */
-  height: 1em;
-  vertical-align: middle;
+.video-mask-wrapper {
   position: relative;
-  line-height: 1;
+  width: 100%;
+  height: 200px; /* Desired height */
+  overflow: hidden;
 }
 
-.inline-video-mask video {
+text-mask {
+display: none;
+}
+
+.video-mask-wrapper video,
+#swag-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  -webkit-mask: url(#text-mask-svg);
-  mask: url(#text-mask-svg);
+  -webkit-mask-image: url(#text-mask-svg);
+  mask-image: url(#text-mask-svg);
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-position: center;
@@ -397,9 +402,31 @@ input:focus, select:focus {
   mask-size: contain;
 }
 
-/* Keep mask definition hidden from view but in the DOM */
-.text-mask-defs {
-  display: none;
+.video-text-wrapper {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  height: 200px; /* Adjust height as needed */
+  vertical-align: middle;
+  overflow: hidden;
+  line-height: 1;
+  margin: 0.5rem 0;
+}
+
+.masked-text {
+  position: relative;
+  display: block;
+  font-size: 10vw; /* Responsive size */
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  font-weight: 900;
+  letter-spacing: -3px;
+  color: transparent;
+  text-align: center;
+  background: inherit;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: 1;
 }
 
 @media (min-width: 600px) {
