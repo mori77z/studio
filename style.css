@@ -373,15 +373,16 @@ input:focus, select:focus {
   text-align: justify;
 }
 
-.video-mask-wrapper {
+.inline-video-mask {
+  display: inline-block;
+  width: 6ch; /* Adjust based on text length and font size */
+  height: 1em;
+  vertical-align: middle;
   position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
+  line-height: 1;
 }
 
-/* Only apply the SVG mask to the video */
-#swag-video {
+.inline-video-mask video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -396,8 +397,8 @@ input:focus, select:focus {
   mask-size: contain;
 }
 
-/* Hide the SVG visually but keep it in DOM */
-.text-mask {
+/* Keep mask definition hidden from view but in the DOM */
+.text-mask-defs {
   display: none;
 }
 
