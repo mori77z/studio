@@ -376,6 +376,45 @@ input:focus, select:focus {
     text-align: justify;
   }
 
+.video-mask-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px; /* Oder die gewünschte Höhe */
+  overflow: hidden;
+}
+
+.video-mask-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* SVG Maskierung */
+  -webkit-mask-image: url(#text-mask-svg);
+  mask-image: url(#text-mask-svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.text-mask {
+  display: none;
+}
+
+/* Responsiv für Textgröße */
+.opener-text {
+  font-size: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: justify;
+}
+
 .video-text-wrapper {
   display: inline-block;
   position: relative;
@@ -412,7 +451,6 @@ input:focus, select:focus {
   -webkit-text-fill-color: transparent;
   z-index: 1;
 }
-
 
 @media (min-width: 600px) {
     .header-container {
