@@ -385,11 +385,6 @@ input:focus, select:focus {
   display: block;
 }
 
-.swag-text {
-  font-size: 180px;
-  text-align: left;
-}
-
 
 @media (min-width: 600px) {
   .header-container {
@@ -479,12 +474,6 @@ input:focus, select:focus {
       font-size: 34px;
     }
 
-.swag-mask-container svg {
-  height: 200px;
-}
-.swag-text {
-  font-size: 200px;
-}
 }
 
 @media (prefers-color-scheme: dark) {
