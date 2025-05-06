@@ -55,25 +55,27 @@
 <h4 class="opener-text">
   <strong>Remember when Web was 
     <span class="swag-mask-container">
-      <svg viewBox="0 0 600 160" width="180" height="48" style="vertical-align: middle;">
+      <svg preserveAspectRatio="none" viewBox="0 0 600 180">
         <defs>
           <mask id="swagMask">
             <rect width="100%" height="100%" fill="black"/>
-            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle"
+            <text x="0" y="50%" dominant-baseline="middle" textLength="100%" lengthAdjust="spacingAndGlyphs"
                   font-family="Impact, Arial Black, sans-serif" font-weight="900"
-                  fill="white" font-size="160">SWAG</text>
+                  fill="white" font-size="180px">SWAG</text>
           </mask>
         </defs>
-        <image width="100%" height="100%"
-               href="https://raw.githubusercontent.com/mori77z/library/refs/heads/main/swagbackdrop.gif"
-               mask="url(#swagMask)"/>
+        <rect width="100%" height="100%" fill="url(#swagPattern)"/>
+        <pattern id="swagPattern" patternUnits="userSpaceOnUse" width="100%" height="100%">
+          <image width="100%" height="100%" preserveAspectRatio="xMidYMid slice"
+                 href="https://raw.githubusercontent.com/mori77z/library/refs/heads/main/swagbackdrop.gif"/>
+        </pattern>
       </svg>
     </span>?
   </strong>
 <span>I create authentic webpages that truly represent you. 
     I have worked with artists from various creative fields and businesses from all over Europe. 
     With my experience in coding and web development there's nothing we can't make happen on your page or application. I also know webflow, framer, wix, wordpress,...
-    <br>Ready to rethink your online presence? Let’s make it <span class="bold-h3">bold</span>!
+    <br>Ready to rethink your online presence? Let’s make it <strong>bold</strong>!
 </h4>
   
 

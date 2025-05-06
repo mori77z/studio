@@ -376,14 +376,22 @@ input:focus, select:focus {
   }
 
 .swag-mask-container {
-  display: inline-block;
-  vertical-align: left;
+  display: block;
+  width: 100%;
+  height: 120px;
+  position: relative;
 }
 
 .swag-mask-container svg {
   display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
 }
 
+.swag-mask-container svg rect {
+  mask: url(#swagMask);
+}
 
 @media (min-width: 600px) {
   .header-container {
@@ -393,7 +401,7 @@ input:focus, select:focus {
         display: none;
     }
     .logo a {
-        font-size: 48px;
+        font-size: 72px;
         letter-spacing: -5px;
     }
 
@@ -473,6 +481,13 @@ input:focus, select:focus {
       font-size: 34px;
     }
 
+  .swag-mask-container {
+    height: 200px;
+  }
+
+  .swag-mask-container svg text {
+    font-size: 160px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
