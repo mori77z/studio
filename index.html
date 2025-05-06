@@ -19,16 +19,22 @@
 </head>
 <body>
     
-    <svg width="0" height="0">
+<svg width="0" height="0">
   <defs>
-    <mask id="text-mask-svg" maskUnits="userSpaceOnUse">
-      <rect width="100%" height="100%" fill="white"/>
-      <text x="50%" y="50%" font-family="Impact, sans-serif" font-size="160" text-anchor="middle" fill="black" letter-spacing="-3" dy=".35em">
+    <mask id="text-mask-svg" maskUnits="objectBoundingBox">
+      <rect width="1" height="1" fill="white"/>
+      <text x="50%" y="50%" dy=".35em"
+            text-anchor="middle"
+            font-family="Impact, sans-serif"
+            font-size="1"
+            letter-spacing="-0.02"
+            fill="black">
         SWAG
       </text>
     </mask>
   </defs>
 </svg>
+
 
 <div class="header-container">
     <div class="logo">
@@ -64,14 +70,13 @@
 </section>
 
 <h4 class="opener-text">
-  <strong>Remember when Web was 
-    <span class="video-text-wrapper">
-      <video autoplay loop muted playsinline id="swag-video">
-        <source src="/library/swagbackdrop.mp4" type="video/mp4">
-      </video>
-      <span class="masked-text">SWAG</span>
-    </span>?
-  </strong><br>
+  <strong>Remember when Web was</strong>
+  <span class="video-text-wrapper">
+    <video autoplay loop muted playsinline id="swag-video">
+      <source src="/library/swagbackdrop.mp4" type="video/mp4">
+    </video>
+  </span>
+  <strong>?</strong><br>
   I create authentic webpages that truly represent you. 
   I have worked with artists from various creative fields and businesses from all over Europe. 
   With my experience in coding and web development there's nothing we can't make happen on your page or application. 
