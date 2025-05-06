@@ -475,8 +475,10 @@ input:focus, select:focus {
     }
 
 .swag-mask-container svg {
-  font-size: 200px;
   height: 200px;
+}
+.swag-text {
+  fotb-size: 200px;
 }
 }
 
