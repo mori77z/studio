@@ -365,30 +365,31 @@ input:focus, select:focus {
     display: none;
 }
 
-  .opener-text {
-    font-size: 20px;
-    max-width: 600px;
-    margin: 0 auto;
-    display: block;
-    text-align: center;
-    padding-left: 10px;
-    padding-right: 10px;
-    text-align: justify;
-  }
+.opener-text {
+  font-size: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  display: block;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: justify;
+}
 
 .video-mask-wrapper {
   position: relative;
   width: 100%;
-  height: 200px; /* Oder die gewünschte Höhe */
+  height: 200px; /* Desired height */
   overflow: hidden;
 }
 
-.video-mask-wrapper video {
+.video-mask-wrapper video,
+#swag-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  /* SVG Maskierung */
+
+  /* SVG masking */
   -webkit-mask-image: url(#text-mask-svg);
   mask-image: url(#text-mask-svg);
   -webkit-mask-repeat: no-repeat;
@@ -403,43 +404,21 @@ input:focus, select:focus {
   display: none;
 }
 
-/* Responsiv für Textgröße */
-.opener-text {
-  font-size: 20px;
-  max-width: 600px;
-  margin: 0 auto;
-  display: block;
-  text-align: center;
-  padding-left: 10px;
-  padding-right: 10px;
-  text-align: justify;
-}
-
 .video-text-wrapper {
   display: inline-block;
   position: relative;
   width: 100%;
-  height: 200px; /* Höhe der Zeile – bei Bedarf anpassen */
+  height: 200px; /* Adjust height as needed */
   vertical-align: middle;
   overflow: hidden;
   line-height: 1;
   margin: 0.5rem 0;
 }
 
-#swag-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-}
-
 .masked-text {
   position: relative;
   display: block;
-  font-size: 10vw; /* Responsive Größe */
+  font-size: 10vw; /* Responsive size */
   font-family: 'Impact', 'Arial Black', sans-serif;
   font-weight: 900;
   letter-spacing: -3px;
