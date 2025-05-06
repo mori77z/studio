@@ -474,30 +474,10 @@ input:focus, select:focus {
       font-size: 34px;
     }
 
-  .video-text-wrapper {
-    height: 300px;
-  }
-  
-  #swag-video {
-    height: 300px;
-  }
-
-  .swag-text-container {
-    width: 180px;
-    height: 60px;
-  }
-  
-  .swag-text-mask {
-    font-size: 54px;
-  }
-
-  .swag-mask-container svg {
-    height: 300px;
-  }
-  
-  .swag-mask-container svg text {
-    font-size: 240px;
-  }
+.swag-mask-container svg {
+  font-size: 200px;
+  height: 200px;
+}
 }
 
 @media (prefers-color-scheme: dark) {
