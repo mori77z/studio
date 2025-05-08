@@ -394,6 +394,10 @@ input:focus, select:focus {
   mask: url(#swagMask);
 }
 
+.swag-subtext {
+  margin-top: -6px;
+}
+
 @media (min-width: 600px) {
   .header-container {
         padding: 20px;
