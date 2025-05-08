@@ -395,7 +395,9 @@ input:focus, select:focus {
 }
 
 .swag-subtext {
-  margin-top: -20px;
+  display: block;
+  position: relative;
+  margin-top: -10px;
 }
 
 @media (min-width: 600px) {
