@@ -9,6 +9,13 @@ body {
   }
 
 
+    @font-face {
+      font-family: 'Snell';
+      src: url('/assets/Snell-Roundhand-Script.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
 .header-container {
     display: flex;
     flex-direction: column;
@@ -63,7 +70,7 @@ body {
 }
 
 .logo a:hover {
-    font-family: "IBM Plex Serif", serif;
+    font-family: Snell, serif;
     font-style: italic;
     letter-spacing: -2px;
     padding-right: 4px;
@@ -106,7 +113,7 @@ nav {
     }
 
     nav a:hover {
-    font-family: "IBM Plex Serif", serif;
+    font-family: Snell, serif;
       font-style: italic;
       font-size: 1.3em;
       letter-spacing: 0;
@@ -114,7 +121,7 @@ nav {
     }
 
     nav a.active {
-    font-family: "IBM Plex Serif", serif;
+    font-family: Snell, serif;
       font-style: italic;
       font-size: 1.3em;
       letter-spacing: 0;
