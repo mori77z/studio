@@ -507,7 +507,7 @@ input:focus, select:focus {
   }
 }
 
-@media (prefers-color-scheme: dark) {
+/*@media (prefers-color-scheme: dark) {
     body {
         background-color: #000;
         color: #fff;
@@ -579,7 +579,7 @@ input:focus, select:focus {
         border: 2px solid #ffffff;
     }
 
-}
+}*/
     
 @media (min-width: 1025px), (orientation: portrait) {
     .coverflow-container {
