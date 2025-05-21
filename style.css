@@ -4,6 +4,7 @@ body {
     display: flex;
     flex-direction: column;
     font-family: Helvetica,  Arial, sans-serif;
+    color: #727273;
     margin: 0;
     padding-bottom: 40px;
   }
@@ -85,7 +86,7 @@ body {
 }
 
 .studio-tag {
-    font-size: 0.3em;
+    font-size: 0.4em;
     letter-spacing: initial;
     }
     
@@ -108,7 +109,7 @@ nav {
       line-height: 1.1;
       letter-spacing: -0.03em;
       text-decoration: underline;
-      color: black;
+      color: #727273;
       cursor: pointer;
     }
 
