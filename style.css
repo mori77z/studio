@@ -64,11 +64,11 @@ body {
 .logo a {
     font-family: Helvetica,  Arial, sans-serif;
     font-size: 2em;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1;
     color: black;
-    letter-spacing: -0.1em;
-    color: rgba(0, 0, 0, 0.4);
+    letter-spacing: -0.075em;
+    color: black;
     white-space: nowrap;
     box-sizing: border-box; 
     text-decoration: none;
@@ -92,7 +92,7 @@ body {
 
 .studio-tag {
     font-size: 0.4em;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: initial;
     }
     
