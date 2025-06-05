@@ -196,9 +196,7 @@ h4 {
     top: 120px;
     left: 50%;
     transform: translateX(-50%);    
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    background: rgba(0, 0, 0, 0.2);
+    background: white;
     z-index: 10;
     width: 85%;
     max-height: 60%;
@@ -206,13 +204,8 @@ h4 {
     top: 120px;
     padding: 10px;
     border-radius: 10px;
-    text-shadow:  
-      -1px -1px 1px rgba(255, 255, 255, 0.8),  
-       1px  1px 1px rgba(255, 255, 255, 0.8),  
-      -1px  1px 1px rgba(255, 255, 255, 0.8),  
-       1px -1px 1px rgba(255, 255, 255, 0.8);
-    border: 2px solid #222;
-    box-shadow: 0 0 0 1px white, 0 0 0 2px black;
+    border: 2px solid black;
+    box-shadow: 0 0 0 2px black;
 }
 
 .popup.active {
@@ -223,11 +216,6 @@ h4 {
 .popup a {
     text-decoration: underline;
     color: black;
-     text-shadow:  
-      -1px -1px 1px rgba(255, 255, 255, 0.8),  
-       1px  1px 1px rgba(255, 255, 255, 0.8),  
-      -1px  1px 1px rgba(255, 255, 255, 0.8),  
-       1px -1px 1px rgba(255, 255, 255, 0.8);
 }
 
 .pricing-container {
