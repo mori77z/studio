@@ -299,33 +299,52 @@ document.addEventListener("DOMContentLoaded", function () {
     const links = document.querySelectorAll(".nav a");
     const popups = document.querySelectorAll(".popup");
 
+    // Function to open popup by id
+    function openPopupById(id) {
+        const target = document.getElementById(id);
+        if (target) {
+            popups.forEach(popup => popup.classList.remove("active")); // close others
+            target.classList.add("active");
+        }
+    }
+
+    // Click handlers on nav links (toggle popups)
     links.forEach(link => {
         link.addEventListener("click", function (event) {
             event.preventDefault();
-
-            const target = document.querySelector(this.getAttribute("href"));
-            
+            const href = this.getAttribute("href");
+            const target = document.querySelector(href);
             if (target) {
-                // Falls das Popup bereits aktiv ist, schließe es
                 if (target.classList.contains("active")) {
                     target.classList.remove("active");
                 } else {
-                    // Vorherige aktive Popups schließen
                     popups.forEach(popup => popup.classList.remove("active"));
-
-                    // Neues Popup öffnen
                     target.classList.add("active");
                 }
             }
         });
     });
 
-    // Klicken außerhalb des Popups schließt es
+    // Click outside popup/nav closes all popups
     document.addEventListener("click", function (event) {
         if (!event.target.closest(".popup") && !event.target.closest(".nav a")) {
             popups.forEach(popup => popup.classList.remove("active"));
         }
     });
+
+    // --- New part: open popup automatically if URL matches ---
+    // Example: URL = https://example.com/studio/pricing
+    // Extract "/pricing" part
+    const path = window.location.pathname;
+    const basePath = "/studio";
+    if (path.startsWith(basePath)) {
+        const subPath = path.slice(basePath.length); // "/pricing" or "/clients"
+        const popupId = subPath.startsWith("/") ? subPath.slice(1) : subPath; // "pricing"
+
+        if (popupId) {
+            openPopupById(popupId);
+        }
+    }
 });
 
 document.addEventListener("DOMContentLoaded", function() {
