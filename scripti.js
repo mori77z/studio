@@ -296,55 +296,47 @@ window.addEventListener("touchend", handleSwipeEnd);
 updateCoverFlow();
 
 document.addEventListener("DOMContentLoaded", function () {
-    const links = document.querySelectorAll(".nav a");
     const popups = document.querySelectorAll(".popup");
 
-    // Function to open popup by id
     function openPopupById(id) {
+        popups.forEach(popup => popup.classList.remove("active"));
         const target = document.getElementById(id);
-        if (target) {
-            popups.forEach(popup => popup.classList.remove("active")); // close others
-            target.classList.add("active");
-        }
+        if (target) target.classList.add("active");
     }
 
-    // Click handlers on nav links (toggle popups)
+    // Open popup if URL has a hash like #clients or #pricing
+    if (window.location.hash) {
+        const id = window.location.hash.substring(1);
+        openPopupById(id);
+    }
+
+    // Your existing nav click handler for toggling popups
+    const links = document.querySelectorAll(".nav a");
     links.forEach(link => {
         link.addEventListener("click", function (event) {
             event.preventDefault();
-            const href = this.getAttribute("href");
-            const target = document.querySelector(href);
-            if (target) {
-                if (target.classList.contains("active")) {
-                    target.classList.remove("active");
-                } else {
-                    popups.forEach(popup => popup.classList.remove("active"));
-                    target.classList.add("active");
-                }
+            const id = this.getAttribute("href").substring(1);
+            const target = document.getElementById(id);
+
+            if (target.classList.contains("active")) {
+                target.classList.remove("active");
+            } else {
+                popups.forEach(popup => popup.classList.remove("active"));
+                target.classList.add("active");
             }
+
+            // Update URL hash without scrolling
+            history.replaceState(null, null, `#${id}`);
         });
     });
 
-    // Click outside popup/nav closes all popups
+    // Clicking outside closes popups
     document.addEventListener("click", function (event) {
         if (!event.target.closest(".popup") && !event.target.closest(".nav a")) {
             popups.forEach(popup => popup.classList.remove("active"));
+            history.replaceState(null, null, window.location.pathname);
         }
     });
-
-    // --- New part: open popup automatically if URL matches ---
-    // Example: URL = https://example.com/studio/pricing
-    // Extract "/pricing" part
-    const path = window.location.pathname;
-    const basePath = "/studio";
-    if (path.startsWith(basePath)) {
-        const subPath = path.slice(basePath.length); // "/pricing" or "/clients"
-        const popupId = subPath.startsWith("/") ? subPath.slice(1) : subPath; // "pricing"
-
-        if (popupId) {
-            openPopupById(popupId);
-        }
-    }
 });
 
 document.addEventListener("DOMContentLoaded", function() {
