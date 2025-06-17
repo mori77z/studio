@@ -247,54 +247,6 @@ if (emailBtn) {
     });
 }
 
-const coverFlow = document.querySelector(".coverflow-track");
-const items = document.querySelectorAll(".coverflow-item");
-const flipSound = new Audio("flip.mp3"); // Sound für das Scrollen
-let index = Math.floor(items.length / 2);
-
-function updateCoverFlow() {
-    items.forEach((item, i) => {
-        let offset = i - index;
-        let scale = Math.max(1 - Math.abs(offset) * 0.2, 0.6);
-        let rotateY = offset * 50;
-        let translateX = offset * 250;
-
-        item.style.transform = `translateX(${translateX}px) scale(${scale}) rotateY(${rotateY}deg)`;
-        item.style.opacity = Math.abs(offset) > 2 ? 0 : 1; // Unsichtbar, wenn zu weit links/rechts
-        item.style.zIndex = -Math.abs(offset);
-    });
-}
-
-function handleScroll(e) {
-    let direction = e.deltaY > 0 ? 1 : -1;
-    if ((direction === 1 && index < items.length - 1) || (direction === -1 && index > 0)) {
-        index += direction;
-        flipSound.play();
-        updateCoverFlow();
-    }
-}
-
-function handleSwipeStart(e) {
-    startX = e.touches[0].clientX;
-}
-
-function handleSwipeEnd(e) {
-    let diff = startX - e.changedTouches[0].clientX;
-    if (diff > 50 && index < items.length - 1) {
-        index++;
-    } else if (diff < -50 && index > 0) {
-        index--;
-    }
-    flipSound.play();
-    updateCoverFlow();
-}
-
-window.addEventListener("wheel", handleScroll);
-window.addEventListener("touchstart", handleSwipeStart);
-window.addEventListener("touchend", handleSwipeEnd);
-
-updateCoverFlow();
-
 document.addEventListener("DOMContentLoaded", function () {
     const popups = document.querySelectorAll(".popup");
 
@@ -354,7 +306,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-/*document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     let lang = navigator.language || navigator.userLanguage;
     let isGerman = lang.startsWith("de");
 
@@ -448,41 +400,4 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector(".time-selector label").textContent = "Wähle einen Termin für einen ersten Call (Mo-Fr / 10:00-17:00)";
         document.querySelector("#whatsapp-btn").textContent = "E-Mail senden";
 
-}*/
-
-/* WhatsApp-Button mit Datum & Uhrzeit
-const whatsappBtn = document.getElementById('whatsapp-btn');
-
-if (whatsappBtn) {
-    whatsappBtn.addEventListener('click', function (event) {
-        event.preventDefault(); // Prevents page jump since it's an <a> tag
-
-        let selectedDate = dateInput.value;
-        let selectedTime = timeSelect.value;
-
-        if (!selectedDate || !selectedTime) {
-            alert("Please select a date and time.");
-            return;
-        }
-
-        // Convert date format from YYYY-MM-DD to DD.MM.YYYY
-        let dateParts = selectedDate.split("-");
-        let formattedDate = `${dateParts[2]}.${dateParts[1]}.${dateParts[0]}`;
-
-        // Detect browser language (default to English if not German)
-        let lang = navigator.language || navigator.userLanguage;
-        let isGerman = lang.startsWith("de");
-
-        // Generate message based on detected language
-        let message;
-        if (isGerman) {
-            message = `Hey Moritz, ich würde gerne ein Gespräch vereinbaren am ${formattedDate} um ${selectedTime}. Liebe Grüße, [Ihr Name / Firma / E-Mail-Adresse]`;
-        } else {
-            message = `Hey Moritz, I would like to schedule a call with you on ${formattedDate} at ${selectedTime}. Best regards, [Your Name / Company / Email Address]`;
-        }
-
-        let url = `https://wa.me/4915737365084?text=${encodeURIComponent(message)}`;
-        window.open(url, '_blank');
-    });
 }
-*/
