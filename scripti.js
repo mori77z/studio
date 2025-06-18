@@ -324,11 +324,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("a[href='#pricing']").textContent = "Preise";
     document.querySelector("#toggleRadio").textContent = "Radio";
 
-    // "Go Back"-Link
-    const goBackElement = document.querySelector(".go-back");
-    if (goBackElement) {
-        goBackElement.textContent = "(Zurück)";
-    }
 
     // Popups
     document.querySelector("#details p").innerHTML = "Ich konzipiere und gestalte Websites, die durchdacht, visuell prägnant und funktional sind. Mein Fokus liegt auf alleinstehenden digitalen Identitäten – für anspruchsvolle Projekte, die mehr als Standardlösungen brauchen. Als Industriedesigner (B.A.) bringe ich dabei mein Verständnis für Gestaltung und Funktionalität mit ein. Mach gerne einen Termin unten oder schick mir eine Anfrage an: <a href='mailto:email@moritzgauss.com'>email@moritzgauss.com</a>.";
@@ -344,16 +339,6 @@ document.addEventListener("DOMContentLoaded", function () {
         <p>Akademische Ausbildung:<br>Industriedesign-Studium als Grundlage für methodisches Webdesign.</p>
         <p>Freiberufliche Erfahrung:<br>Zusammenarbeit mit Kunden in der Entwicklung von Websites.</p>
         <p>Interdisziplinäre Fähigkeiten:<br>Kombination aus Creative Coding, Branding und UI/UX-Design.</p>
-    `;
-
-    document.querySelector("#clients").innerHTML = `
-        <p><a href="https://1902site.framer.website" target="_blank"><i>(In Arbeit)</i> seit 19.02.20 Gegen Rassismus</a></p>
-        <p><a href="https://instagram.com/hfg.radio" target="_blank"><i>(In Arbeit)</i> HFG Offenbach Radio</a></p>
-        <p><a href="https://oscardiazvisual.com">Oscar Diaz (Barcelona, Spanien)<a/></p>
-        <p><a href="https://www.nookcph.com" target="_blank">Nook Agency (Kopenhagen, Dänemark)</a></p>
-        <p><a href="https://germanistan.eu" target="_blank">Germanistan Musiklabel (München, Deutschland)</a></p>
-        <p><a href="https://www.13senses-agency.ch" target="_blank">13 Senses Agency (Luzern, Schweiz)</a></p>
-        <p><a href="https://www.byebambi.com" target="_blank">Bye Bambi Modemarke (Windsor, Australien)</a></p>
     `;
 
     document.querySelector("#pricing").innerHTML = `
