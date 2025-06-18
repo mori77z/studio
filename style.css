@@ -139,6 +139,8 @@ nav {
 #radioSection {
     max-height: 0px;
     overflow: hidden;
+    padding-left: 10px;
+    padding-right: 14px;
     transition: max-height 0.4s ease-in-out;
 }
 
@@ -439,19 +441,16 @@ input:focus, select:focus {
     width: 320px;
 }
 
+#radioSection {
+  padding-left: 20px;
+  padding-right: 24px;
+}
+
     .opener-text {
       padding-left: 20px;
       padding-right: 20px;
       font-size: 34px;
     }
-
-  .swag-mask-container {
-    height: 200px;
-  }
-
-  .swag-mask-container svg text {
-    font-size: 160px;
-  }
 }
 
 @media (prefers-color-scheme: dark) {
