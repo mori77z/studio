@@ -64,7 +64,7 @@ body {
 .logo a {
     font-family: Helvetica,  Arial, sans-serif;
     font-size: 2em;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1;
     color: black;
     letter-spacing: -0.075em;
@@ -92,7 +92,7 @@ body {
 
 .studio-tag {
     font-size: 0.4em;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: initial;
     }
     
@@ -483,6 +483,7 @@ input:focus, select:focus {
 
     .popup {
         background: black;
+        border: 1px solid white;
     }
 
     .popup a {
