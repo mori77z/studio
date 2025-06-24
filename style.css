@@ -355,15 +355,20 @@ input:focus, select:focus {
 @media (min-width: 600px) {
   .header-container {
         padding: 20px;
+        background-color: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
     }
     .logo a {
         font-size: 3em;
+        mix-blend-mode: difference;
     }
     .logo a:hover {
     font-size: 3.1em;
     }
     nav a {
         font-size: 1.2em;
+        mix-blend-mode: difference;
       }
           nav a:hover {
       font-size: 1.3em;
