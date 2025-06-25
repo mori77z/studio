@@ -210,7 +210,7 @@ function initNavScrollHide() {
 
 document.addEventListener("DOMContentLoaded", initNavScrollHide);
 
-document.addEventListener("DOMContentLoaded", initNavScrollHide);
+
 // Datumsauswahl auf Werktage & korrekten Starttag beschränken
 const dateInput = document.getElementById('date');
 const timeSelect = document.getElementById('time');
