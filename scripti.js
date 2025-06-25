@@ -171,32 +171,44 @@ function initNavScrollHide() {
   if (!nav) return;
 
   let lastScroll = window.scrollY;
+  let isScrollingDown = false;
   let ticking = false;
 
-  function update() {
+  function updateScrollDirection() {
     const currentScroll = window.scrollY;
     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
 
-    const scrollingDown = currentScroll > lastScroll && currentScroll > 100 && currentScroll < maxScroll - 1;
-    const scrollingUp = currentScroll < lastScroll;
-
-    if (scrollingDown) {
-      nav.classList.add('shrink');
-    } else if (scrollingUp) {
-      nav.classList.remove('shrink');
+    // Wenn wir fast ganz unten sind → nix tun
+    if (currentScroll >= maxScroll - 2) {
+      ticking = false;
+      return;
     }
 
-    lastScroll = currentScroll <= 0 ? 0 : currentScroll;
+    if (currentScroll > lastScroll && currentScroll > 100) {
+      if (!isScrollingDown) {
+        nav.classList.add('shrink');
+        isScrollingDown = true;
+      }
+    } else if (currentScroll < lastScroll) {
+      if (isScrollingDown) {
+        nav.classList.remove('shrink');
+        isScrollingDown = false;
+      }
+    }
+
+    lastScroll = currentScroll;
     ticking = false;
   }
 
   window.addEventListener('scroll', () => {
     if (!ticking) {
-      requestAnimationFrame(update);
+      requestAnimationFrame(updateScrollDirection);
       ticking = true;
     }
   });
 }
+
+document.addEventListener("DOMContentLoaded", initNavScrollHide);
 
 document.addEventListener("DOMContentLoaded", initNavScrollHide);
 // Datumsauswahl auf Werktage & korrekten Starttag beschränken
