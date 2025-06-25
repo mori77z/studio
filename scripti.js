@@ -170,24 +170,35 @@ function initNavScrollHide() {
   const nav = document.querySelector('nav');
   if (!nav) return;
 
-  let lastScroll = 0;
+  let lastScroll = window.scrollY;
+  let ticking = false;
 
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+  function update() {
+    const currentScroll = window.scrollY;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
 
-    if (currentScroll > lastScroll && currentScroll > 100) {
+    const scrollingDown = currentScroll > lastScroll && currentScroll > 100 && currentScroll < maxScroll - 1;
+    const scrollingUp = currentScroll < lastScroll;
+
+    if (scrollingDown) {
       nav.classList.add('shrink');
-    } else {
+    } else if (scrollingUp) {
       nav.classList.remove('shrink');
     }
 
     lastScroll = currentScroll <= 0 ? 0 : currentScroll;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
   });
 }
 
 document.addEventListener("DOMContentLoaded", initNavScrollHide);
-
-
 // Datumsauswahl auf Werktage & korrekten Starttag beschränken
 const dateInput = document.getElementById('date');
 const timeSelect = document.getElementById('time');
