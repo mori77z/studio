@@ -165,6 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
     updateClock();
 });
 
+
 function initNavScrollHide() {
   const nav = document.querySelector('nav');
   if (!nav) return;
@@ -174,12 +175,8 @@ function initNavScrollHide() {
   window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-    if (window.innerWidth >= 768) {
-      if (currentScroll > lastScroll && currentScroll > 100) {
-        nav.classList.add('shrink');
-      } else {
-        nav.classList.remove('shrink');
-      }
+    if (currentScroll > lastScroll && currentScroll > 100) {
+      nav.classList.add('shrink');
     } else {
       nav.classList.remove('shrink');
     }
@@ -189,6 +186,7 @@ function initNavScrollHide() {
 }
 
 document.addEventListener("DOMContentLoaded", initNavScrollHide);
+
 
 // Datumsauswahl auf Werktage & korrekten Starttag beschränken
 const dateInput = document.getElementById('date');
