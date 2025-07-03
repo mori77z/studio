@@ -160,6 +160,12 @@ nav.shrink {
       text-decoration: underline; 
       padding-right: 4px;
     }
+    
+    .chrome-difference .logo a,
+.chrome-difference nav a {
+  mix-blend-mode: difference;
+  color: white;
+}
 
 #radioSection {
     max-height: 0px;
