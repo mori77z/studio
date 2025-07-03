@@ -7,104 +7,92 @@ function goBack() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    const moritzElement = document.querySelector(".moritz");
-    if (!moritzElement) {
-        console.error("Element '.moritz' not found!");
-        return;
+document.addEventListener("DOMContentLoaded", () => {
+  const nav = document.querySelector('nav');
+  const header = document.querySelector('.header-container');
+  const moritzElement = document.querySelector(".moritz");
+
+  if (!nav || !header || !moritzElement) {
+    console.warn("Wichtige Elemente nicht gefunden!");
+    return;
+  }
+
+  // Browser check für Chrome (Backdrop blur aus, Unterschiedseffekt an)
+  const isChrome = /Chrome/.test(navigator.userAgent) && !/Edg|OPR/.test(navigator.userAgent);
+  const scrollThreshold = isChrome ? 20 : 100;
+
+  if (isChrome) {
+    header.style.backdropFilter = 'none';
+    header.style.webkitBackdropFilter = 'none';
+    header.classList.add('chrome-difference');
+  }
+
+  // Glitch Effekt Variablen
+  let isFlipping = false;
+  const originalHTML = moritzElement.innerHTML;
+  const symbols = "✪✹❦♬♪♩★❥✱♫♠♞♥";
+
+  function randomChar() {
+    return symbols[Math.floor(Math.random() * symbols.length)];
+  }
+
+  function glitchText(element, duration = 300) {
+    if (isFlipping) return;
+    isFlipping = true;
+
+    const scrambledHTML = `
+      <span class="studio-tag">${randomChar()}${randomChar()}${randomChar()}</span>
+      <span class="glitch-effect">${randomChar()}${randomChar()}${randomChar()}${randomChar()}</span>
+      <span class="glitch-effect"> ${randomChar()}${randomChar()}${randomChar()}</span>
+    `;
+
+    element.innerHTML = scrambledHTML;
+
+    setTimeout(() => {
+      element.innerHTML = originalHTML;
+      isFlipping = false;
+    }, duration);
+  }
+
+  // Scroll Hide Variablen
+  let lastScroll = window.pageYOffset || document.documentElement.scrollTop;
+  let ticking = false;
+  let isScrollingDown = false;
+  let lastGlitchScroll = lastScroll;
+
+  function onScroll() {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    // Nav scroll hide
+    if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
+      if (!isScrollingDown) {
+        nav.classList.add('shrink');
+        isScrollingDown = true;
+      }
+    } else if (currentScroll < lastScroll) {
+      if (isScrollingDown) {
+        nav.classList.remove('shrink');
+        isScrollingDown = false;
+      }
     }
 
-    let isFlipping = false;
-    const originalHTML = moritzElement.innerHTML; // Store original styled HTML
-
-    function randomChar() {
-        const symbols = "✪✹❦♬♪♩★❥✱♫♠♞♥";
-        return symbols[Math.floor(Math.random() * symbols.length)];
+    // Glitch nur wenn Scroll um >50px (Debounce)
+    if (Math.abs(currentScroll - lastGlitchScroll) > 50) {
+      glitchText(moritzElement);
+      lastGlitchScroll = currentScroll;
     }
 
-    function glitchText(element, duration = 300) {
-        if (isFlipping) return;
-        isFlipping = true;
+    lastScroll = currentScroll <= 0 ? 0 : currentScroll;
+    ticking = false;
+  }
 
-        // Generate a glitch effect while preserving letter-spacing
-        let scrambledHTML = `
-            <span class="studio-tag">${randomChar()}${randomChar()}${randomChar()}</span>
-            <span class="glitch-effect">${randomChar()}${randomChar()}${randomChar()}${randomChar()}</span>
-            <span class="glitch-effect"> ${randomChar()}${randomChar()}${randomChar()}</span>
-        `;
-
-        element.innerHTML = scrambledHTML;
-
-        setTimeout(() => {
-            element.innerHTML = originalHTML; // Restore original styled HTML
-            isFlipping = false;
-        }, duration);
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(onScroll);
+      ticking = true;
     }
-
-    let lastScrollTop = 0;
-    let ticking = false;
-
-    window.addEventListener("scroll", function () {
-        if (!ticking) {
-            requestAnimationFrame(() => {
-                let currentScroll = window.scrollY;
-                if (Math.abs(currentScroll - lastScrollTop) > 50) {
-                    glitchText(moritzElement);
-                    lastScrollTop = currentScroll;
-                }
-                ticking = false;
-            });
-            ticking = true;
-        }
-    });
+  });
 });
-
-document.addEventListener("DOMContentLoaded", function () {
-    const textElement = document.querySelector(".text-me");
-    let isFlipping = false;
-
-    function randomChar() {
-        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-        return chars[Math.floor(Math.random() * chars.length)];
-    }
-
-    function glitchText(duration = 300) {
-        if (isFlipping) return; 
-        isFlipping = true;
-
-        const textBeforeClock = "Now ";
-        const textAfterClock = " is the perfect time to send me a message!";
-
-        let scrambledBefore = textBeforeClock.split("").map(char => 
-            char === " " ? " " : randomChar()
-        ).join("");
-
-        let scrambledAfter = textAfterClock.split("").map(char => 
-            char === " " ? " " : randomChar()
-        ).join("");
-
-        // Set the new scrambled text while keeping the clock untouched
-        textElement.innerHTML = `
-            ${scrambledBefore}<span id="hours">${document.getElementById('hours').textContent}</span>:<span id="minutes">${document.getElementById('minutes').textContent}</span>:<span id="seconds">${document.getElementById('seconds').textContent}</span>${scrambledAfter}
-        `;
-
-        setTimeout(() => {
-            textElement.innerHTML = `
-                Now <span id="hours">${document.getElementById('hours').textContent}</span>:<span id="minutes">${document.getElementById('minutes').textContent}</span>:<span id="seconds">${document.getElementById('seconds').textContent}</span> is the perfect time to send me a message!
-            `;
-            isFlipping = false;
-        }, duration);
-    }
-
-    // Glitch only on significant scroll (50px movement)
-    let lastScrollTop = 0;
-    window.addEventListener("scroll", function () {
-        let currentScroll = window.scrollY;
-        if (Math.abs(currentScroll - lastScrollTop) > 50) {
-            glitchText();
-            lastScrollTop = currentScroll;
-        }
-    });
 
     const images = document.querySelectorAll(".offering-item img");
     if (images.length === 0) {
@@ -163,56 +151,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setInterval(updateClock, 1000);
     updateClock();
-});
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const nav = document.querySelector('nav');
-  const header = document.querySelector('.header-container');
-  if (!nav || !header) {
-    console.warn("Nav oder Header nicht gefunden!");
-    return;
-  }
-
-  const isChrome = /Chrome/.test(navigator.userAgent) && !/Edg|OPR/.test(navigator.userAgent);
-  const scrollThreshold = isChrome ? 20 : 100;
-
-  // Blur in Chrome entfernen + Unterschied-Klasse
-  if (isChrome) {
-    header.style.backdropFilter = 'none';
-    header.style.webkitBackdropFilter = 'none';
-    header.classList.add('chrome-difference');
-  }
-
-  let lastScroll = window.pageYOffset || document.documentElement.scrollTop;
-  let ticking = false;
-  let isScrollingDown = false;
-
-  function onScroll() {
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
-      if (!isScrollingDown) {
-        nav.classList.add('shrink');
-        isScrollingDown = true;
-      }
-    } else if (currentScroll < lastScroll) {
-      if (isScrollingDown) {
-        nav.classList.remove('shrink');
-        isScrollingDown = false;
-      }
-    }
-
-    lastScroll = currentScroll <= 0 ? 0 : currentScroll;
-    ticking = false;
-  }
-
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(onScroll);
-      ticking = true;
-    }
-  });
 });
 
 // Datumsauswahl auf Werktage & korrekten Starttag beschränken
