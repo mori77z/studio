@@ -174,6 +174,10 @@ function initNavScrollHide() {
   let isScrollingDown = false;
   let ticking = false;
 
+  // Schwelle zum Verstecken, je nach Browser unterschiedlich
+  const isChrome = /Chrome/.test(navigator.userAgent) && !/Edg|OPR/.test(navigator.userAgent);
+  const scrollThreshold = isChrome ? 20 : 100;  // Bei Chrome schon ab 20px verstecken
+
   function updateScrollDirection() {
     const currentScroll = window.scrollY;
     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
@@ -184,7 +188,7 @@ function initNavScrollHide() {
       return;
     }
 
-    if (currentScroll > lastScroll && currentScroll > 100) {
+    if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
       if (!isScrollingDown) {
         nav.classList.add('shrink');
         isScrollingDown = true;
@@ -208,10 +212,9 @@ function initNavScrollHide() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", initNavScrollHide);
-
-
 document.addEventListener("DOMContentLoaded", () => {
+  initNavScrollHide();
+
   const isChrome = /Chrome/.test(navigator.userAgent) && !/Edg|OPR/.test(navigator.userAgent);
 
   if (isChrome) {
@@ -226,6 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
     header.classList.add('chrome-difference');
   }
 });
+
 
 // Datumsauswahl auf Werktage & korrekten Starttag beschränken
 const dateInput = document.getElementById('date');
