@@ -166,27 +166,30 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-function initNavScrollHide() {
+document.addEventListener("DOMContentLoaded", () => {
   const nav = document.querySelector('nav');
-  if (!nav) return;
+  const header = document.querySelector('.header-container');
+  if (!nav || !header) {
+    console.warn("Nav oder Header nicht gefunden!");
+    return;
+  }
 
-  let lastScroll = window.scrollY;
-  let isScrollingDown = false;
-  let ticking = false;
-
-  // Schwelle zum Verstecken, je nach Browser unterschiedlich
   const isChrome = /Chrome/.test(navigator.userAgent) && !/Edg|OPR/.test(navigator.userAgent);
-  const scrollThreshold = isChrome ? 20 : 100;  // Bei Chrome schon ab 20px verstecken
+  const scrollThreshold = isChrome ? 20 : 100;
 
-  function updateScrollDirection() {
-    const currentScroll = window.scrollY;
-    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  // Blur in Chrome entfernen + Unterschied-Klasse
+  if (isChrome) {
+    header.style.backdropFilter = 'none';
+    header.style.webkitBackdropFilter = 'none';
+    header.classList.add('chrome-difference');
+  }
 
-    // Wenn wir fast ganz unten sind → nix tun
-    if (currentScroll >= maxScroll - 2) {
-      ticking = false;
-      return;
-    }
+  let lastScroll = window.pageYOffset || document.documentElement.scrollTop;
+  let ticking = false;
+  let isScrollingDown = false;
+
+  function onScroll() {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
     if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
       if (!isScrollingDown) {
@@ -200,36 +203,17 @@ function initNavScrollHide() {
       }
     }
 
-    lastScroll = currentScroll;
+    lastScroll = currentScroll <= 0 ? 0 : currentScroll;
     ticking = false;
   }
 
   window.addEventListener('scroll', () => {
     if (!ticking) {
-      requestAnimationFrame(updateScrollDirection);
+      requestAnimationFrame(onScroll);
       ticking = true;
     }
   });
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  initNavScrollHide();
-
-  const isChrome = /Chrome/.test(navigator.userAgent) && !/Edg|OPR/.test(navigator.userAgent);
-
-  if (isChrome) {
-    const header = document.querySelector('.header-container');
-    if (!header) return;
-
-    // Entferne den Blur
-    header.style.backdropFilter = 'none';
-    header.style.webkitBackdropFilter = 'none';
-
-    // Füge Klasse für CSS-Effekt hinzu
-    header.classList.add('chrome-difference');
-  }
 });
-
 
 // Datumsauswahl auf Werktage & korrekten Starttag beschränken
 const dateInput = document.getElementById('date');
