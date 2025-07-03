@@ -221,7 +221,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Entferne den Blur
     header.style.backdropFilter = 'none';
     header.style.webkitBackdropFilter = 'none';
-    header.style.backgroundColor = 'black'; // Wichtig für Difference-Effekt
 
     // Füge Klasse für CSS-Effekt hinzu
     header.classList.add('chrome-difference');
