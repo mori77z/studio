@@ -170,6 +170,8 @@ function initNavScrollHide() {
   const nav = document.querySelector('nav');
   if (!nav) return;
 
+  const isMobile = window.innerWidth < 768;
+
   let lastScroll = window.scrollY;
   let isScrollingDown = false;
   let ticking = false;
@@ -178,8 +180,8 @@ function initNavScrollHide() {
     const currentScroll = window.scrollY;
     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
 
-    // Wenn wir fast ganz unten sind → nix tun
-    if (currentScroll >= maxScroll - 2) {
+    // 👉 Nur auf Mobile: Wenn ganz unten, dann nav nicht ausblenden
+    if (isMobile && currentScroll >= maxScroll - 2) {
       ticking = false;
       return;
     }
