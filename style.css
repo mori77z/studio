@@ -104,27 +104,14 @@ body {
 
 
 nav {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
     align-items: flex-start;
     width: 100%;
     height: auto;
     margin-top: 20px;
     margin-bottom: 10px;
     gap: 10px;
-  max-height: 500px; 
-  overflow: hidden;
-  opacity: 1;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-}
-
-nav.shrink {
-  max-height: 0;
-  opacity: 0;
-  pointer-events: none;
-  margin: 0;
-  padding: 0;
-  gap: 0;
 }
 
 nav.shrink {
