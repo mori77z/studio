@@ -170,8 +170,6 @@ function initNavScrollHide() {
   const nav = document.querySelector('nav');
   if (!nav) return;
 
-  const isMobile = window.innerWidth < 768;
-
   let lastScroll = window.scrollY;
   let isScrollingDown = false;
   let ticking = false;
@@ -180,8 +178,8 @@ function initNavScrollHide() {
     const currentScroll = window.scrollY;
     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
 
-    // 👉 Nur auf Mobile: Wenn ganz unten, dann nav nicht ausblenden
-    if (isMobile && currentScroll >= maxScroll - 2) {
+    // Wenn wir fast ganz unten sind → nix tun
+    if (currentScroll >= maxScroll - 2) {
       ticking = false;
       return;
     }
@@ -212,6 +210,23 @@ function initNavScrollHide() {
 
 document.addEventListener("DOMContentLoaded", initNavScrollHide);
 
+
+document.addEventListener("DOMContentLoaded", () => {
+  const isChrome = /Chrome/.test(navigator.userAgent) && !/Edg|OPR/.test(navigator.userAgent);
+
+  if (isChrome) {
+    const header = document.querySelector('.header-container');
+    if (!header) return;
+
+    // Entferne den Blur
+    header.style.backdropFilter = 'none';
+    header.style.webkitBackdropFilter = 'none';
+    header.style.backgroundColor = 'black'; // Wichtig für Difference-Effekt
+
+    // Füge Klasse für CSS-Effekt hinzu
+    header.classList.add('chrome-difference');
+  }
+});
 
 // Datumsauswahl auf Werktage & korrekten Starttag beschränken
 const dateInput = document.getElementById('date');
