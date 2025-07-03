@@ -104,14 +104,15 @@ body {
 
 
 nav {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    height: auto;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    gap: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        gap: 10px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        will-change: transform, opacity;
 }
 
 nav.shrink {
@@ -119,7 +120,6 @@ nav.shrink {
   opacity: 0;
   height: 0;
   pointer-events: none;
-  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
     nav a {
