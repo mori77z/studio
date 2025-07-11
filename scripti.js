@@ -264,4 +264,32 @@ function goBack() {
   }
 
   fadeInOfferings();
-});
+    });
+    
+  document.addEventListener("DOMContentLoaded", function () {
+    const header = document.querySelector('.header-container');
+
+    if (!header) return;
+
+    // Initial fade in on load
+    setTimeout(() => {
+      header.classList.add('fade-in-header');
+    }, 100);
+
+    // Scroll-based fade in when returning to top
+    let lastScroll = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+
+      if (currentScroll < 50 && lastScroll > 100) {
+        // User scrolled back to top
+        header.classList.remove('fade-in-header');
+        // Restart animation
+        void header.offsetWidth; // trick to force reflow
+        header.classList.add('fade-in-header');
+      }
+
+      lastScroll = currentScroll;
+    });
+  });
