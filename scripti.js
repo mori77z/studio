@@ -7,66 +7,6 @@ function goBack() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Elemente abfragen
-  const moritzElement = document.querySelector(".moritz");
-  if (!moritzElement) {
-    console.warn("Element '.moritz' nicht gefunden!");
-    return;
-  }
-
-  // Glitch Effekt
-  let isFlipping = false;
-  const originalHTML = moritzElement.innerHTML;
-  const symbols = "✪✹❦♬♪♩★❥✱♫♠♞♥";
-
-  function randomChar() {
-    return symbols[Math.floor(Math.random() * symbols.length)];
-  }
-
-  function glitchText(element, duration = 300) {
-    if (isFlipping) return;
-    isFlipping = true;
-
-    const scrambledHTML = `
-      <span class="studio-tag">${randomChar()}${randomChar()}${randomChar()}</span>
-      <span class="glitch-effect">${randomChar()}${randomChar()}${randomChar()}${randomChar()}</span>
-      <span class="glitch-effect"> ${randomChar()}${randomChar()}${randomChar()}</span>
-    `;
-
-    element.innerHTML = scrambledHTML;
-
-    setTimeout(() => {
-      element.innerHTML = originalHTML;
-      isFlipping = false;
-    }, duration);
-  }
-
-  // Nur Glitch bei Scroll
-  let lastScroll = window.pageYOffset || document.documentElement.scrollTop;
-  let ticking = false;
-  let lastGlitchScroll = lastScroll;
-
-  function onScroll() {
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (Math.abs(currentScroll - lastGlitchScroll) > 50) {
-      glitchText(moritzElement);
-      lastGlitchScroll = currentScroll;
-    }
-
-    lastScroll = currentScroll <= 0 ? 0 : currentScroll;
-    ticking = false;
-  }
-
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(onScroll);
-      ticking = true;
-    }
-  });
-});
-
   const images = document.querySelectorAll(".offering-item img");
   if (images.length) {
     const zoomedContainer = document.createElement("div");
