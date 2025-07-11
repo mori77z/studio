@@ -9,23 +9,10 @@ function goBack() {
 
 document.addEventListener("DOMContentLoaded", () => {
   // Elemente abfragen
-  const nav = document.querySelector('nav');
-  const header = document.querySelector('.header-container');
   const moritzElement = document.querySelector(".moritz");
-
-  if (!nav || !header || !moritzElement) {
-    console.warn("Wichtige Elemente nicht gefunden!");
+  if (!moritzElement) {
+    console.warn("Element '.moritz' nicht gefunden!");
     return;
-  }
-
-  // Chrome check
-  const isChrome = /Chrome/.test(navigator.userAgent) && !/Edg|OPR/.test(navigator.userAgent);
-  const scrollThreshold = isChrome ? 20 : 100;
-
-  if (isChrome) {
-    header.style.backdropFilter = 'none';
-    header.style.webkitBackdropFilter = 'none';
-    header.classList.add('chrome-difference');
   }
 
   // Glitch Effekt
@@ -55,26 +42,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }, duration);
   }
 
-  // Scroll Hide + Glitch Variablen
+  // Nur Glitch bei Scroll
   let lastScroll = window.pageYOffset || document.documentElement.scrollTop;
   let ticking = false;
-  let isScrollingDown = false;
   let lastGlitchScroll = lastScroll;
 
   function onScroll() {
     const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
-      if (!isScrollingDown) {
-        nav.classList.add('shrink');
-        isScrollingDown = true;
-      }
-    } else if (currentScroll < lastScroll) {
-      if (isScrollingDown) {
-        nav.classList.remove('shrink');
-        isScrollingDown = false;
-      }
-    }
 
     if (Math.abs(currentScroll - lastGlitchScroll) > 50) {
       glitchText(moritzElement);
@@ -91,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ticking = true;
     }
   });
+});
 
   const images = document.querySelectorAll(".offering-item img");
   if (images.length) {
