@@ -21,14 +21,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 10px;
-    gap: 10px; 
+    padding: 20px 10px;
+    gap: 10px;
     overflow: visible;
-    position: sticky;
-    top: 0;
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    position: relative; /* war: sticky */
+    top: unset;
+    background-color: transparent; /* kein Blur, kein Hintergrund */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     z-index: 10;
 }
 
@@ -104,15 +104,24 @@ body {
 
 
 nav {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        margin-top: 20px;
-        margin-bottom: 10px;
-        gap: 10px;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-        will-change: transform, opacity;
+    display: flex;
+    flex-direction: row; /* Desktop: nebeneinander */
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    gap: 24px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    will-change: transform, opacity;
+    justify-content: flex-start;
+}
+
+@media (max-width: 767px) {
+  nav {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+  }
 }
 
 nav.shrink {
@@ -532,6 +541,35 @@ input:focus, select:focus {
 @media (prefers-color-scheme: dark) and (min-width: 768px) {
   .header-container {
     background-color: transparent;
+  }
+}
+
+/* Fade-In Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+.fade-in {
+  opacity: 1 !important;
+  animation: fadeIn 0.7s cubic-bezier(.4,0,.2,1) forwards;
+}
+
+.offering-item {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+/* Text sofort sichtbar nach Fade-In */
+.offerings-header, .offerings-header h4 {
+  opacity: 0;
+  transition: opacity 0.7s;
+}
+
+@media (max-width: 767px) {
+  .offering-item,
+  .offerings-header, .offerings-header h4 {
+    opacity: 0;
   }
 }
 
