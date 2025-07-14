@@ -44,24 +44,7 @@
         src="https://open.spotify.com/embed/playlist/0GnYwlv9eLPrCvYt9C67aS">
     </iframe>
 </section>
-  
-   <!--<div class="popup" id="details" data-hidden="true">
-    <p>By exploring subculture trends and early internet aesthetics, I create unique websites that combine bold visual elements with functional design, aiming for artistic value and efficiency. Schedule a call below or send an inquiry to <a href="mailto:email@moritzgauss.com">email@moritzgauss.com</a>.</p>
-</div>
 
-<div class="popup" id="offers" data-hidden="true">
-    <p>1. Visual Design and Branding:<br>Crafting cohesive visual elements that align with your brand's identity, including color schemes, typography, and imagery.</p>
-    <p>2. Custom Graphics and Icons:<br>Designing unique graphics and icons tailored to your website's theme and purpose, enhancing visual appeal and user engagement.</p>
-    <p>3. Interactive Elements:<br>Incorporating interactive features such as animations, hover effects, and clickable elements to make your website more dynamic and engaging.</p>
-    <p>4. Content Layout and Structure:<br>Organizing content in a clear, logical, and aesthetically pleasing manner, ensuring information is easy to find and read.</p>
-</div>
-
-<div class="popup" id="experience" data-hidden="true">
-    <p>Academic Training:<br>Leveraging my Industrial Design studies for a methodical approach to web design.</p>
-    <p>Freelance Experience:<br>Years of collaborating with clients to create custom digital experiences.</p>
-    <p>Interdisciplinary Skills:<br>Combining digital art, branding, and UI/UX design for comprehensive solutions.</p>
-</div>
--->
 <div class="popup" id="clients">
     <p>List of selected clients</p>
     <p><a href="https://seit-hanau.de" target="_blank">Seit Hanau Landing Page</a></p>
@@ -146,7 +129,31 @@
 <p class="imprint-link"> <a href="/about/imprint/">Imprint</a> </p>
     
 <script src="scripti.js"></script>
-         <script src="/material/favicon.js"></script>
+<script src="/material/favicon.js"></script>
+<script>
+  const wrapper = document.getElementById('shadow-wrapper');
+  const shadow = wrapper.attachShadow({ mode: 'closed' });
+
+  shadow.innerHTML = `
+   <!--<div class="popup" id="details">
+    <p>By exploring subculture trends and early internet aesthetics, I create unique websites that combine bold visual elements with functional design, aiming for artistic value and efficiency. Schedule a call below or send an inquiry to <a href="mailto:email@moritzgauss.com">email@moritzgauss.com</a>.</p>
+</div>
+
+<div class="popup" id="offers" data-hidden="true">
+    <p>1. Visual Design and Branding:<br>Crafting cohesive visual elements that align with your brand's identity, including color schemes, typography, and imagery.</p>
+    <p>2. Custom Graphics and Icons:<br>Designing unique graphics and icons tailored to your website's theme and purpose, enhancing visual appeal and user engagement.</p>
+    <p>3. Interactive Elements:<br>Incorporating interactive features such as animations, hover effects, and clickable elements to make your website more dynamic and engaging.</p>
+    <p>4. Content Layout and Structure:<br>Organizing content in a clear, logical, and aesthetically pleasing manner, ensuring information is easy to find and read.</p>
+</div>
+
+<div class="popup" id="experience" data-hidden="true">
+    <p>Academic Training:<br>Leveraging my Industrial Design studies for a methodical approach to web design.</p>
+    <p>Freelance Experience:<br>Years of collaborating with clients to create custom digital experiences.</p>
+    <p>Interdisciplinary Skills:<br>Combining digital art, branding, and UI/UX design for comprehensive solutions.</p>
+</div>
+-->
+  `;
+</script>
 
 </body>
 </html>
